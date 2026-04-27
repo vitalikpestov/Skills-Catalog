@@ -1,0 +1,110 @@
+{
+  "name": "knowledge-work-plugins",
+  "owner": {
+    "name": "Anthropic"
+  },
+  "plugins": [
+    {
+      "name": "productivity",
+      "source": "./productivity",
+      "description": "Manage tasks, plan your day, and build up memory of important context about your work. Syncs with your calendar, email, and chat to keep everything organized and on track."
+    },
+    {
+      "name": "enterprise-search",
+      "source": "./enterprise-search",
+      "description": "Search across all of your company's tools in one place. Find anything across email, chat, documents, and wikis without switching between apps."
+    },
+    {
+      "name": "cowork-plugin-management",
+      "source": "./cowork-plugin-management",
+      "description": "Create, customize, and manage plugins tailored to your organization's tools and workflows. Configure MCP servers, adjust plugin behavior, and adapt templates to match how your team works."
+    },
+    {
+      "name": "sales",
+      "source": "./sales",
+      "description": "Prospect, craft outreach, and build deal strategy faster. Prep for calls, manage your pipeline, and write personalized messaging that moves deals forward."
+    },
+    {
+      "name": "finance",
+      "source": "./finance",
+      "description": "Streamline finance and accounting workflows, from journal entries and reconciliation to financial statements and variance analysis. Speed up audit prep, month-end close, and keeping your books clean."
+    },
+    {
+      "name": "data",
+      "source": "./data",
+      "description": "Write SQL, explore datasets, and generate insights faster. Build visualizations and dashboards, and turn raw data into clear stories for stakeholders."
+    },
+    {
+      "name": "legal",
+      "source": "./legal",
+      "description": "Speed up contract review, NDA triage, and compliance workflows for in-house legal teams. Draft legal briefs, organize precedent research, and manage institutional knowledge."
+    },
+    {
+      "name": "marketing",
+      "source": "./marketing",
+      "description": "Create content, plan campaigns, and analyze performance across marketing channels. Maintain brand voice consistency, track competitors, and report on what's working."
+    },
+    {
+      "name": "customer-support",
+      "source": "./customer-support",
+      "description": "Triage tickets, draft responses, escalate issues, and build your knowledge base. Research customer context and turn resolved issues into self-service content."
+    },
+    {
+      "name": "product-management",
+      "source": "./product-management",
+      "description": "Write feature specs, plan roadmaps, and synthesize user research faster. Keep stakeholders updated and stay ahead of the competitive landscape."
+    },
+    {
+      "name": "slack-by-salesforce",
+      "source": "./partner-built/slack",
+      "description": "Slack integration for searching messages, sending communications, managing canvases, and more",
+      "author": {
+        "name": "Salesforce"
+      }
+    },
+    {
+      "name": "apollo",
+      "source": "./partner-built/apollo",
+      "description": "Prospect, enrich leads, and load outreach sequences with Apollo.io — one-click MCP server integration for Claude Code and Cowork.",
+      "author": {
+        "name": "Apollo.io"
+      }
+    },
+    {
+      "name": "common-room",
+      "source": "./partner-built/common-room",
+      "description": "Turn Common Room into your GTM copilot. Research accounts and contacts, prep for calls with attendee profiles and talking points, and draft personalized outreach across email, LinkedIn, and phone.",
+      "author": {
+        "name": "Common Room"
+      }
+    },
+    {
+      "name": "engineering",
+      "source": "./engineering",
+      "description": "Streamline engineering workflows — standups, code review, architecture decisions, incident response, and technical documentation. Works with your existing tools or standalone."
+    },
+    {
+      "name": "human-resources",
+      "source": "./human-resources",
+      "description": "Streamline people operations — recruiting, onboarding, performance reviews, compensation analysis, and policy guidance. Maintain compliance and keep your team running smoothly."
+    },
+    {
+      "name": "design",
+      "source": "./design",
+      "description": "Accelerate design workflows — critique, design system management, UX writing, accessibility audits, research synthesis, and dev handoff. From exploration to pixel-perfect specs."
+    },
+    {
+      "name": "operations",
+      "source": "./operations",
+      "description": "Optimize business operations — vendor management, process documentation, change management, capacity planning, and compliance tracking. Keep your organization running efficiently."
+    },
+    {
+      "name": "brand-voice",
+      "source": "./partner-built/brand-voice",
+      "description": "Discover your brand voice from existing documents and conversations, generate enforceable guidelines, and validate AI-generated content against your established tone and positioning.",
+      "author": {
+        "name": "Tribe AI"
+      }
+    }
+  ]
+}

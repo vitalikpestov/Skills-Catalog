@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f1b3d"/>
+      <stop offset="100%" style="stop-color:#1a1a3e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4a90d9"/>
+      <stop offset="100%" style="stop-color:#7c5cbf"/>
+    </linearGradient>
+    <linearGradient id="goldAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c9a227"/>
+      <stop offset="100%" style="stop-color:#e8c84a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="400" fill="url(#bg)"/>
+
+  <!-- Subtle grid pattern -->
+  <g opacity="0.04">
+    <line x1="0" y1="0" x2="0" y2="400" stroke="#ffffff" stroke-width="1"/>
+    <line x1="50" y1="0" x2="50" y2="400" stroke="#ffffff" stroke-width="1"/>
+    <line x1="100" y1="0" x2="100" y2="400" stroke="#ffffff" stroke-width="1"/>
+    <line x1="150" y1="0" x2="150" y2="400" stroke="#ffffff" stroke-width="1"/>
+    <line x1="200" y1="0" x2="200" y2="400" stroke="#ffffff" stroke-width="1"/>
+    <line x1="250" y1="0" x2="250" y2="400" stroke="#ffffff" stroke-width="1"/>
+    <line x1="300" y1="0" x2="300" y2="400" stroke="#ffffff" stroke-width="1"/>
+    <line x1="350" y1="0" x2="350" y2="400" stroke="#ffffff" stroke-width="1"/>
+    <line x1="400" y1="0" x2="400" y2="400" stroke="#ffffff" stroke-width="1"/>
+    <line x1="450" y1="0" x2="450" y2="400" stroke="#ffffff" stroke-width="1"/>
+    <line x1="500" y1="0" x2="500" y2="400" stroke="#ffffff" stroke-width="1"/>
+    <line x1="550" y1="0" x2="550" y2="400" stroke="#ffffff" stroke-width="1"/>
+    <line x1="600" y1="0" x2="600" y2="400" stroke="#ffffff" stroke-width="1"/>
+    <line x1="650" y1="0" x2="650" y2="400" stroke="#ffffff" stroke-width="1"/>
+    <line x1="700" y1="0" x2="700" y2="400" stroke="#ffffff" stroke-width="1"/>
+    <line x1="750" y1="0" x2="750" y2="400" stroke="#ffffff" stroke-width="1"/>
+    <line x1="800" y1="0" x2="800" y2="400" stroke="#ffffff" stroke-width="1"/>
+    <line x1="850" y1="0" x2="850" y2="400" stroke="#ffffff" stroke-width="1"/>
+    <line x1="900" y1="0" x2="900" y2="400" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="50" x2="900" y2="50" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="100" x2="900" y2="100" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="150" x2="900" y2="150" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="200" x2="900" y2="200" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="250" x2="900" y2="250" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="300" x2="900" y2="300" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="350" x2="900" y2="350" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="400" x2="900" y2="400" stroke="#ffffff" stroke-width="1"/>
+  </g>
+
+  <!-- Top accent line -->
+  <rect x="0" y="0" width="900" height="3" fill="url(#goldAccent)"/>
+
+  <!-- Left side: ASCII-art LEGAL text -->
+  <text font-family="monospace, 'Courier New', Courier" font-size="11" fill="#4a90d9" font-weight="bold">
+    <tspan x="40" dy="52">&#9608;&#9608;       &#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;  &#9608;&#9608;&#9608;&#9608;&#9608;&#9608;    &#9608;&#9608;&#9608;&#9608;&#9608;   &#9608;&#9608;</tspan>
+    <tspan x="40" dy="16">&#9608;&#9608;       &#9608;&#9608;       &#9608;&#9608;        &#9608;&#9608;   &#9608;&#9608;  &#9608;&#9608;</tspan>
+    <tspan x="40" dy="16">&#9608;&#9608;       &#9608;&#9608;&#9608;&#9608;&#9608;&#9608;   &#9608;&#9608;   &#9608;&#9608;&#9608;  &#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;  &#9608;&#9608;</tspan>
+    <tspan x="40" dy="16">&#9608;&#9608;       &#9608;&#9608;       &#9608;&#9608;    &#9608;&#9608;  &#9608;&#9608;   &#9608;&#9608;  &#9608;&#9608;</tspan>
+    <tspan x="40" dy="16">&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;  &#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;  &#9608;&#9608;&#9608;&#9608;&#9608;&#9608;   &#9608;&#9608;   &#9608;&#9608;  &#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;</tspan>
+  </text>
+
+  <!-- Subtitle under ASCII art -->
+  <text x="40" y="170" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="15" fill="#8899bb" letter-spacing="0.5">AI-Powered Legal Analysis for Claude Code</text>
+
+  <!-- Divider line -->
+  <line x1="40" y1="188" x2="380" y2="188" stroke="#4a90d9" stroke-width="1" opacity="0.3"/>
+
+  <!-- Scale of justice icon -->
+  <g transform="translate(40, 210)" opacity="0.12">
+    <line x1="160" y1="0" x2="160" y2="120" stroke="#4a90d9" stroke-width="3"/>
+    <line x1="80" y1="10" x2="240" y2="10" stroke="#4a90d9" stroke-width="3"/>
+    <circle cx="80" cy="10" r="4" fill="#4a90d9"/>
+    <circle cx="240" cy="10" r="4" fill="#4a90d9"/>
+    <path d="M60,50 L80,10 L100,50 Z" fill="none" stroke="#4a90d9" stroke-width="2"/>
+    <path d="M220,50 L240,10 L260,50 Z" fill="none" stroke="#4a90d9" stroke-width="2"/>
+    <line x1="60" y1="50" x2="100" y2="50" stroke="#4a90d9" stroke-width="2"/>
+    <line x1="220" y1="50" x2="260" y2="50" stroke="#4a90d9" stroke-width="2"/>
+    <rect x="130" y="120" width="60" height="8" rx="2" fill="#4a90d9"/>
+  </g>
+
+  <!-- Right side: Command panel -->
+  <rect x="440" y="38" width="430" height="290" rx="8" fill="#0d1529" stroke="#2a3a5c" stroke-width="1"/>
+
+  <!-- Terminal header dots -->
+  <circle cx="462" cy="56" r="5" fill="#ff5f57"/>
+  <circle cx="480" cy="56" r="5" fill="#febc2e"/>
+  <circle cx="498" cy="56" r="5" fill="#28c840"/>
+  <text x="540" y="60" font-family="monospace, 'Courier New'" font-size="11" fill="#556688">legal-assistant</text>
+
+  <!-- Command lines -->
+  <text font-family="monospace, 'Courier New', Courier" font-size="12.5">
+    <tspan x="462" dy="92" fill="#c9a227">$</tspan><tspan fill="#7c9fc9"> /legal review</tspan><tspan fill="#556688"> &lt;file&gt;</tspan>
+
+    <tspan x="462" dy="22" fill="#c9a227">$</tspan><tspan fill="#7c9fc9"> /legal risks</tspan><tspan fill="#556688"> &lt;file&gt;</tspan>
+
+    <tspan x="462" dy="22" fill="#c9a227">$</tspan><tspan fill="#7c9fc9"> /legal plain</tspan><tspan fill="#556688"> &lt;file&gt;</tspan>
+
+    <tspan x="462" dy="22" fill="#c9a227">$</tspan><tspan fill="#7c9fc9"> /legal negotiate</tspan><tspan fill="#556688"> &lt;file&gt;</tspan>
+
+    <tspan x="462" dy="22" fill="#c9a227">$</tspan><tspan fill="#7c9fc9"> /legal compare</tspan><tspan fill="#556688"> &lt;f1&gt; &lt;f2&gt;</tspan>
+
+    <tspan x="462" dy="22" fill="#c9a227">$</tspan><tspan fill="#7c9fc9"> /legal compliance</tspan><tspan fill="#556688"> &lt;url&gt;</tspan>
+
+    <tspan x="462" dy="22" fill="#c9a227">$</tspan><tspan fill="#7c9fc9"> /legal nda</tspan><tspan fill="#556688"> &lt;desc&gt;</tspan>
+
+    <tspan x="462" dy="22" fill="#c9a227">$</tspan><tspan fill="#7c9fc9"> /legal terms</tspan><tspan fill="#556688"> &lt;url&gt;</tspan>
+
+    <tspan x="462" dy="22" fill="#c9a227">$</tspan><tspan fill="#7c9fc9"> /legal report-pdf</tspan>
+  </text>
+
+  <!-- Bottom separator -->
+  <rect x="0" y="360" width="900" height="1" fill="#2a3a5c" opacity="0.5"/>
+
+  <!-- Footer -->
+  <text x="450" y="382" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="13" fill="#556688" text-anchor="middle" letter-spacing="1.5">14 skills  &#xB7;  5 parallel agents  &#xB7;  PDF reports</text>
+
+  <!-- Bottom accent line -->
+  <rect x="0" y="397" width="900" height="3" fill="url(#goldAccent)"/>
+</svg>

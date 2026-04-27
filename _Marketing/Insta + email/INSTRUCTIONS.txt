@@ -1,0 +1,110 @@
+============================================================
+  INSTAGRAM → NEWSLETTER AUTOMATION
+  Built by Sam | Free Resource
+============================================================
+
+WHAT THIS DOES
+--------------
+Paste any Instagram post or Reel URL and this tool will:
+  - Pull the caption (and transcribe audio for Reels)
+  - Use Claude AI to write a full newsletter email
+  - Preview it in your browser
+  - Copy the HTML straight to your clipboard for Go High Level
+
+------------------------------------------------------------
+
+BEFORE YOU START — YOU WILL NEED:
+------------------------------------------------------------
+
+1. PYTHON 3
+   Download free from: https://www.python.org/downloads/
+   (Tick "Add Python to PATH" during install on Windows)
+
+2. ANTHROPIC API KEY (Claude AI)
+   Sign up at: https://console.anthropic.com
+   Add ~$5 credit, then create an API key
+
+3. META ACCESS TOKEN + INSTAGRAM USER ID
+   - Go to: https://developers.facebook.com
+   - Create an app, add Instagram product
+   - Open Graph API Explorer and generate a token
+   - Run refresh_token.py to make it last 60 days
+   - Run get_ig_id.py to find your Instagram User ID
+   (Full walkthrough in the video)
+
+4. GO HIGH LEVEL CREDENTIALS
+   - GHL API Key: Settings > Integrations > Private Integrations
+   - Location ID: found in your GHL account URL or settings
+
+------------------------------------------------------------
+
+SETUP STEPS
+------------------------------------------------------------
+
+Step 1 — Open Terminal (Mac) or Command Prompt (Windows)
+
+Step 2 — Navigate to this folder:
+   cd path/to/instagram-newsletter-download
+
+Step 3 — Install dependencies (one time only):
+   pip3 install -r requirements.txt
+
+Step 4 — Run the setup script and follow the prompts:
+   python3 setup.py
+
+   It will ask for:
+   - Anthropic API key
+   - Meta access token
+   - Instagram User ID
+   - GHL API key + Location ID
+   - Your name and email (shown as sender)
+   - Your CTA button text and URL (e.g. "Book a Call")
+
+Step 5 — You're ready! Run the tool anytime with:
+   python3 main.py
+
+------------------------------------------------------------
+
+USING THE TOOL
+------------------------------------------------------------
+
+1. Run: python3 main.py
+2. Paste your Instagram post URL and press Enter
+3. Wait for the email to generate (~30 seconds)
+4. Preview opens in your browser automatically
+5. Choose what to do:
+   [a] Approve — copies HTML and opens GHL
+   [e] Edit — find & replace any words
+   [u] Change button URL
+   [s] Skip — move to next email
+   [q] Quit
+
+6. In GHL:
+   - Campaigns > + New > Blank
+   - Click the </> HTML button
+   - Cmd+V (Mac) or Ctrl+V (Windows) to paste
+   - Save as draft and schedule your send
+
+------------------------------------------------------------
+
+IMPORTANT — TOKEN RENEWAL
+------------------------------------------------------------
+
+Your Meta access token lasts 60 days.
+Set a phone reminder to renew it before it expires.
+
+To renew, run:
+   python3 refresh_token.py
+
+You'll need a fresh short-lived token from Graph API Explorer
+each time (takes about 2 minutes).
+
+------------------------------------------------------------
+
+QUESTIONS?
+------------------------------------------------------------
+
+Watch the full setup video: https://youtu.be/drbddbKlDOI
+Or reach out: sam@kaptivmedia.com
+
+============================================================

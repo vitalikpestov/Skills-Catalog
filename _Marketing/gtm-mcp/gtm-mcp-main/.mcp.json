@@ -1,0 +1,49 @@
+{
+  "mcpServers": {
+    "gtm": {
+      "command": "uv",
+      "args": ["run", "--frozen", "gtm-mcp"],
+      "autoApprove": [
+        "get_config",
+        "set_config",
+        "create_project",
+        "list_projects",
+        "save_data",
+        "load_data",
+        "find_campaign",
+        "get_project_costs",
+        "blacklist_check",
+        "blacklist_add",
+        "blacklist_import",
+        "apollo_search_companies",
+        "apollo_search_people",
+        "apollo_search_people_batch",
+        "apollo_enrich_people",
+        "apollo_enrich_companies",
+        "apollo_get_taxonomy",
+        "apollo_estimate_cost",
+        "scrape_website",
+        "scrape_batch",
+        "smartlead_list_campaigns",
+        "smartlead_list_accounts",
+        "smartlead_search_accounts",
+        "smartlead_create_campaign",
+        "smartlead_set_sequence",
+        "smartlead_add_leads",
+        "smartlead_get_campaign",
+        "smartlead_export_leads",
+        "smartlead_sync_replies",
+        "smartlead_send_reply",
+        "smartlead_send_test_email",
+        "smartlead_pause_campaign",
+        "getsales_list_profiles",
+        "getsales_build_flow",
+        "getsales_create_flow",
+        "getsales_add_leads",
+        "sheets_create",
+        "sheets_export_contacts",
+        "sheets_read"
+      ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "skill_name": "ascii-wireframe",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Build me a SaaS dashboard with a sidebar, some stat cards, a couple of charts, and a data table. React and Tailwind.",
+      "expected_output": "Claude should first generate an ASCII wireframe showing the dashboard layout with explicit proportions, labeled sections, sample data in the table, and chart types — before writing any code. Then iterate if needed, then build.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Create a landing page for my AI writing tool called Drafter. I want a hero section, features, pricing with 3 tiers, and a footer. Make it modern.",
+      "expected_output": "Claude should produce an ASCII wireframe showing hero layout (split vs full-width), exact number of feature columns, pricing card structure with tier names, and footer layout — all before writing any HTML/CSS. Proportions and hierarchy should be explicit.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I need an n8n workflow: webhook receives a lead, validate it, look up in HubSpot, check score, route to sales or nurture sequence.",
+      "expected_output": "Claude should draw an ASCII flowchart showing ALL branches including error/invalid paths, not-found cases, and symmetric endings — before generating any workflow JSON. Every decision point and edge case should be visible.",
+      "files": []
+    }
+  ]
+}
