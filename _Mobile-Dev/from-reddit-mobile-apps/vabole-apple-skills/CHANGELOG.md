@@ -1,0 +1,32 @@
+# Changelog
+
+## 2026-05-13
+
+- Added the `core-animation` skill with the full QuartzCore framework index and per-symbol reference pages for `CALayer`, the animation classes (`CAAnimation`, `CABasicAnimation`, `CAKeyframeAnimation`, `CASpringAnimation`, `CAPropertyAnimation`, `CAAnimationGroup`, `CATransition`), `CATransaction`, `CAMediaTiming`, `CATransform3D`, common layer subclasses (`CAShapeLayer`, `CAGradientLayer`, `CAEmitterLayer`, `CAEmitterCell`, `CAReplicatorLayer`, `CAMetalLayer`, `CATextLayer`, `CATiledLayer`), and `CADisplayLink`.
+- Added SwiftUI `Canvas` and `GraphicsContext` reference pages and surfaced them in the `swiftui` skill table.
+- Listed Core Animation in the `apple-docs-index` framework table.
+
+## 2026-04-10
+
+- Added the `uikit` skill with a full UIKit framework index and focused core API pages fetched through the direct Apple DocC workflow.
+- Updated skill fetch instructions to use `pnpm fetch-doc` instead of the old hosted proxy workflow.
+- Replaced stale generated "Not Found" docs for SwiftUI inspector and TipKit popover tips, and removed an unreferenced Liquid Glass "Not Found" page.
+
+## 2026-04-09
+
+Refreshed all 179 skill docs from Apple's DocC JSON directly (replaced the hosted proxy path).
+
+### What changed in the docs
+
+- **App Intents** — Apple reorganized the overview significantly: new "System experiences" and "Domains" sections, new `IntentURLRepresentation` and `AppShortcutsContent` APIs, reworked Siri + Apple Intelligence hierarchy
+- **SwiftUI** — overview trimmed by ~1400 lines (Apple removed duplicate/deprecated entries), new Articles section added
+- **StoreKit, HealthKit, Combine, MapKit, SwiftData indexes** — large reshuffles as Apple reorganized their reference trees
+- **HIG** — tables now render correctly (typography sizes, accessibility contrast ratios, button styles, etc. were previously blank rows); layout and color pages gained substantial new content
+- **Liquid Glass** — all pages updated with refined API surface
+- **Rendering fixes across all docs** — platform availability no longer shows `undefined`, WWDC session links now have proper titles, link text uses real names instead of raw identifiers, Apple images now stay in the main docs, and embedded Apple videos move into neighboring `*.videos.md` sidecars
+
+### Tooling
+
+- Fetch directly from `developer.apple.com` DocC JSON, drop the hosted proxy dependency
+- Native Node TypeScript execution (25.2+), drop `tsx`
+- Add GitHub Actions CI

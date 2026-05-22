@@ -1,0 +1,26 @@
+{
+  "name": "cwb-plugins",
+  "owner": {
+    "name": "Beto",
+    "email": "beto@codewithbeto.dev"
+  },
+  "metadata": {
+    "description": "codewithbeto.dev plugins for Claude Code"
+  },
+  "plugins": [
+    {
+      "name": "cwb-app-icon",
+      "source": {
+        "source": "plugins/cwb-app-icon"
+      },
+      "description": "codewithbeto.dev app icon for Claude Code"
+    },
+    {
+      "name": "cwb-ship",
+      "source": {
+        "source": "plugins/cwb-ship"
+      },
+      "description": "Scaffold production-ready React Native apps using @codewithbeto/ship CLI"
+    }
+  ]
+}

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">A</span>
+                    <span class="logo-text">Analytics</span>
+                </div>
+            </div>
+
+            <nav class="nav">
+                <a href="#" class="nav-item active">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 20V10"></path>
+                        <path d="M18 20V4"></path>
+                        <path d="M6 20v-4"></path>
+                    </svg>
+                    <span>Analytics</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Customers</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                    </svg>
+                    <span>Transactions</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                    <span>Settings</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="avatar">JD</div>
+                    <div class="user-details">
+                        <span class="user-name">John Doe</span>
+                        <span class="user-role">Administrator</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <h1 class="page-title">Dashboard</h1>
+                    <p class="page-subtitle">Welcome back, here's what's happening</p>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="M21 21l-4.35-4.35"></path>
+                        </svg>
+                        <input type="text" placeholder="Search..." class="search-input">
+                    </div>
+                    <button class="btn btn-primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        New Report
+                    </button>
+                </div>
+            </header>
+
+            <!-- Stats Grid -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-label">Total Revenue</span>
+                        <span class="stat-badge positive">+12.5%</span>
+                    </div>
+                    <div class="stat-value">$48,294</div>
+                    <div class="stat-comparison">vs $42,920 last month</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-label">Active Users</span>
+                        <span class="stat-badge positive">+8.2%</span>
+                    </div>
+                    <div class="stat-value">2,847</div>
+                    <div class="stat-comparison">vs 2,631 last month</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-label">Conversion Rate</span>
+                        <span class="stat-badge negative">-2.4%</span>
+                    </div>
+                    <div class="stat-value">3.24%</div>
+                    <div class="stat-comparison">vs 3.32% last month</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-label">Avg. Order Value</span>
+                        <span class="stat-badge positive">+5.1%</span>
+                    </div>
+                    <div class="stat-value">$124.50</div>
+                    <div class="stat-comparison">vs $118.45 last month</div>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts-section">
+                <div class="chart-card chart-large">
+                    <div class="card-header">
+                        <h2 class="card-title">Revenue Overview</h2>
+                        <div class="card-actions">
+                            <button class="tab-btn active" data-period="week">Week</button>
+                            <button class="tab-btn" data-period="month">Month</button>
+                            <button class="tab-btn" data-period="year">Year</button>
+                        </div>
+                    </div>
+                    <div class="chart-container" id="revenue-chart">
+                        <div class="chart-bars">
+                            <div class="chart-bar" style="--height: 65%;" data-value="$32k"><span class="bar-label">Mon</span></div>
+                            <div class="chart-bar" style="--height: 45%;" data-value="$24k"><span class="bar-label">Tue</span></div>
+                            <div class="chart-bar" style="--height: 80%;" data-value="$41k"><span class="bar-label">Wed</span></div>
+                            <div class="chart-bar" style="--height: 55%;" data-value="$28k"><span class="bar-label">Thu</span></div>
+                            <div class="chart-bar" style="--height: 90%;" data-value="$46k"><span class="bar-label">Fri</span></div>
+                            <div class="chart-bar" style="--height: 70%;" data-value="$35k"><span class="bar-label">Sat</span></div>
+                            <div class="chart-bar" style="--height: 40%;" data-value="$20k"><span class="bar-label">Sun</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Traffic Sources</h2>
+                    </div>
+                    <div class="donut-chart" id="traffic-chart">
+                        <div class="donut-ring"></div>
+                        <div class="donut-center">
+                            <span class="donut-value">12.4k</span>
+                            <span class="donut-label">Visitors</span>
+                        </div>
+                    </div>
+                    <ul class="chart-legend">
+                        <li class="legend-item">
+                            <span class="legend-color" style="--color: var(--primary-500);"></span>
+                            <span class="legend-label">Direct</span>
+                            <span class="legend-value">4,890</span>
+                        </li>
+                        <li class="legend-item">
+                            <span class="legend-color" style="--color: var(--accent-500);"></span>
+                            <span class="legend-label">Organic</span>
+                            <span class="legend-value">3,420</span>
+                        </li>
+                        <li class="legend-item">
+                            <span class="legend-color" style="--color: var(--success-500);"></span>
+                            <span class="legend-label">Referral</span>
+                            <span class="legend-value">2,180</span>
+                        </li>
+                        <li class="legend-item">
+                            <span class="legend-color" style="--color: var(--warning-500);"></span>
+                            <span class="legend-label">Social</span>
+                            <span class="legend-value">1,910</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Recent Activity -->
+            <section class="activity-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Recent Transactions</h2>
+                        <a href="#" class="card-link">View all</a>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Customer</th>
+                                <th>Product</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th class="text-right">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="customer-cell">
+                                        <div class="customer-avatar">SM</div>
+                                        <span class="customer-name">Sarah Mitchell</span>
+                                    </div>
+                                </td>
+                                <td>Pro Subscription</td>
+                                <td class="text-secondary">Jan 8, 2026</td>
+                                <td><span class="status-badge success">Completed</span></td>
+                                <td class="text-right text-mono">$299.00</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="customer-cell">
+                                        <div class="customer-avatar">MJ</div>
+                                        <span class="customer-name">Michael Johnson</span>
+                                    </div>
+                                </td>
+                                <td>Enterprise License</td>
+                                <td class="text-secondary">Jan 7, 2026</td>
+                                <td><span class="status-badge success">Completed</span></td>
+                                <td class="text-right text-mono">$1,499.00</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="customer-cell">
+                                        <div class="customer-avatar">EW</div>
+                                        <span class="customer-name">Emma Wilson</span>
+                                    </div>
+                                </td>
+                                <td>Starter Plan</td>
+                                <td class="text-secondary">Jan 7, 2026</td>
+                                <td><span class="status-badge pending">Pending</span></td>
+                                <td class="text-right text-mono">$49.00</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="customer-cell">
+                                        <div class="customer-avatar">JB</div>
+                                        <span class="customer-name">James Brown</span>
+                                    </div>
+                                </td>
+                                <td>Pro Subscription</td>
+                                <td class="text-secondary">Jan 6, 2026</td>
+                                <td><span class="status-badge failed">Failed</span></td>
+                                <td class="text-right text-mono">$299.00</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="customer-cell">
+                                        <div class="customer-avatar">OD</div>
+                                        <span class="customer-name">Olivia Davis</span>
+                                    </div>
+                                </td>
+                                <td>Team Plan</td>
+                                <td class="text-secondary">Jan 5, 2026</td>
+                                <td><span class="status-badge success">Completed</span></td>
+                                <td class="text-right text-mono">$799.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

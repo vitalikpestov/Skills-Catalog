@@ -1,0 +1,576 @@
+# App Store Screenshot Specs — DoseSync
+# Version: 2.0 (2026-04-19)
+# Defines 15 screens × 3 CPPs × 4 locales for iPhone 6.9" (1290×2796)
+#
+# Used by ScreenshotComposerView + ScreenshotRenderer to generate
+# DoseSync/AppStoreAssets/screenshots/iphone-69-{cpp}-{order}-{slug}-{locale}.png
+#
+# Sources of truth:
+#   - Marketing/App-Store-Screenshots-Brief.md v3.2 (design + composition)
+#   - Marketing/appstore-screenshots-copy.md v3.2 (copy in 4 locales)
+#   - Design/AAA-2026-04-18/34-appstore-screens-improvement-plan.md (this rollout)
+
+version: "2.0"
+
+# ---------------------------------------------------------------------------
+# Target devices
+# ---------------------------------------------------------------------------
+target_devices:
+  - id: iphone-6.9
+    short_code: "69"
+    width: 1290
+    height: 2796
+    required: true
+  # Optional fallbacks (uncomment to enable):
+  # - id: iphone-6.5
+  #   short_code: "65"
+  #   width: 1284
+  #   height: 2778
+  #   required: false
+  # - id: iphone-6.3
+  #   short_code: "63"
+  #   width: 1206
+  #   height: 2622
+  #   required: false
+
+# ---------------------------------------------------------------------------
+# Locales (in submission priority order)
+# ---------------------------------------------------------------------------
+locales:
+  - id: en-US
+    short: en
+    headline_max_chars: 32
+    subtitle_max_chars: 80
+  - id: ru
+    short: ru
+    headline_max_chars: 38
+    subtitle_max_chars: 92
+  - id: fr-FR
+    short: fr
+    headline_max_chars: 40
+    subtitle_max_chars: 96
+  - id: es-ES
+    short: es
+    headline_max_chars: 39
+    subtitle_max_chars: 94
+
+# ---------------------------------------------------------------------------
+# Theme presets per CPP — token-driven (per ParthJadhav skill methodology)
+# ---------------------------------------------------------------------------
+themes:
+  caregiver:
+    bg: "#FFFFFF"
+    fg: "#1A1A1A"
+    accent: "#00C896"   # canonical brand teal (Color.DS.V2.Brand.base)
+    muted: "#6B7280"
+    style: clean-light
+  grandparent:
+    bg: "#FAF7F2"       # warm cream — softer for elderly audience
+    fg: "#1A1A1A"
+    accent: "#00C896"
+    muted: "#6B7280"
+    style: warm-light
+  parent:
+    bg: "#0F172A"       # deep slate — communicates control + reliability
+    fg: "#FFFFFF"
+    accent: "#00C896"
+    muted: "#94A3B8"
+    style: confident-bold
+  contrast:             # used for SS2.2 + SS3.5 (overrides per slide)
+    bg: "#0F172A"
+    fg: "#FFFFFF"
+    accent: "#00C896"
+    muted: "#94A3B8"
+    style: contrast-dark
+
+# ---------------------------------------------------------------------------
+# Typography tokens (canvas-relative — per ParthJadhav skill audit §G5)
+# Formulas resolve at render time using device.width as cW
+# ---------------------------------------------------------------------------
+typography:
+  hero_headline:
+    size_formula: "cW * 0.10"
+    weight: 700
+    line_height: 0.92
+  standard_headline:
+    size_formula: "cW * 0.085"
+    weight: 700
+    line_height: 1.0
+  subtitle:
+    size_formula: "cW * 0.038"
+    weight: 500
+    line_height: 1.2
+  caption:
+    size_formula: "cW * 0.028"
+    weight: 600
+    line_height: 1.3
+  big_number:           # for SS3.4 («97%»)
+    size_formula: "cW * 0.40"
+    weight: 800
+    line_height: 1.0
+
+# ---------------------------------------------------------------------------
+# Mockup positioning (per ParthJadhav skill metrics §G6)
+# Applied to iPhone PNG mockup overlay
+# ---------------------------------------------------------------------------
+mockup_iphone:
+  position:
+    bottom: 0
+    horizontal: center
+    width_pct: 84            # range 82-86%
+    translate_y_pct: 13      # bleed off bottom for breathing room
+  screen_inset:
+    left_pct: 5.2
+    top_pct: 2.2
+    width_pct: 89.8
+    height_pct: 95.2
+    border_radius_pct_h: 12.6
+    border_radius_pct_v: 6.3
+
+# ---------------------------------------------------------------------------
+# Layout patterns (10 enums consumed by ScreenshotComposerView)
+# ---------------------------------------------------------------------------
+layout_patterns:
+  - id: split-screen
+    description: "50/50 before-after, side-by-side compare"
+    requires: [before_image, after_image]
+  - id: two-phone-overlay
+    description: "Two phones layered (back faded, front prominent)"
+    requires: [back_phone, front_phone]
+  - id: single-with-alert
+    description: "Single phone + alert overlay badge"
+    requires: [phone, alert_text]
+  - id: hero-element
+    description: "Centered icon/symbol (QR code, etc), no phone"
+    requires: [hero_symbol]
+  - id: full-bleed-ui
+    description: "Phone screen fills frame, minimal overlay text"
+    requires: [phone]
+  - id: centered-phone-warm-scene
+    description: "Phone center + ambient illustration around"
+    requires: [phone, scene_illustration]
+  - id: contrast
+    description: "Dark bg, single white headline, no UI"
+    requires: [headline]
+  - id: layered-notification
+    description: "Phone + notification overlay + warm scene"
+    requires: [phone, notification_overlay]
+  - id: stat-hero
+    description: "Stat badge dominant + supporting visual chain"
+    requires: [stat_badge, chain_image]
+  - id: big-number
+    description: "Massive number (cW × 0.40) + small caption"
+    requires: [number_text, caption]
+  - id: centered-phone-cta
+    description: "Centered phone with hero next-dose card + accent CTA button"
+    requires: [phone_content, cta_label]
+  - id: centered-phone-large-button
+    description: "Centered phone with simplified single-button UI (Grandparent mode)"
+    requires: [phone_content, button_label]
+
+# ---------------------------------------------------------------------------
+# CPPs + Screens (15 total = 3 CPPs × 5 screens each)
+# Copy resolved at render time from Marketing/appstore-screenshots-copy.md
+# ---------------------------------------------------------------------------
+cpps:
+  caregiver:
+    audience: "Adults 30-55 coordinating parent + child meds"
+    emotion: "Finally, everyone knows."
+    theme: caregiver
+    screens:
+      - id: SS1.1
+        order: 1
+        slug: replace-group-chat
+        layout: split-screen
+        approach: kill-pain
+        copy_key: SS1.1
+        mock_data:
+          before_messages:
+            - "Did you give it?"
+            - "I don't remember"
+            - "Ask Dad 😤"
+          after_log:
+            - { caregiver: "Anna", time: "8:03 AM", status: given }
+            - { caregiver: "Mike", time: "12:01 PM", status: given }
+        keywords_ocr: [group chat, replace, family coordination, who gave, no confusion, one app]
+
+      - id: SS1.2
+        order: 2
+        slug: see-who-gave
+        layout: two-phone-overlay
+        approach: state-outcome
+        copy_key: SS1.2
+        mock_data:
+          team_avatars:
+            - { name: "Anna", color: "#3B82F6" }
+            - { name: "Mike", color: "#F97316" }
+            - { name: "Mom",  color: "#A855F7" }
+          log_entries:
+            - { dependent: "Mom", caregiver: "Anna", time: "8:03 AM", status: given }
+            - { dependent: "Mom", caregiver: "Mike", time: "12:01 PM", status: given }
+        keywords_ocr: [shared medication log, real-time, caregivers, family, who gave]
+
+      - id: SS1.3
+        order: 3
+        slug: never-double-dose
+        layout: single-with-alert
+        approach: paint-moment
+        copy_key: SS1.3
+        mock_data:
+          status: "✅ Given by Anna at 8:03 AM"
+          alert: "⚠️ Already Given"
+          alert_body: "This dose was already confirmed by Anna at 8:03 AM"
+        keywords_ocr: [double dose, prevention, already given, real-time sync, blocks]
+
+      - id: SS1.4
+        order: 4
+        slug: add-anyone
+        layout: hero-element
+        approach: kill-pain
+        copy_key: SS1.4
+        mock_data:
+          hero_symbol: "qrcode"
+          role_badges: [Caregiver, Viewer, Limited]
+        keywords_ocr: [caregiver, invite, QR code, NFC, family medication log, roles]
+
+      - id: SS1.5
+        order: 5
+        slug: every-dose-every-day
+        layout: full-bleed-ui
+        approach: state-outcome
+        copy_key: SS1.5
+        mock_data:
+          source_screen: HomeView   # from real iOS app capture
+          calendar_days_complete: 12
+          perfect_day_badge: true
+        keywords_ocr: [dose log, history, track, complete, offline, medication history]
+
+      # Added 2026-05-02 (IOS-SCR-INFRA-V2 / IOS-SCR-01A unblock).
+      # PM Path B chosen — copy from Master Pool Screen 16 (Section A).
+      # Hero #1 ah-ha moment for landing + ASC primary submission.
+      - id: SS1.6
+        order: 6
+        slug: home-next-dose-confirm
+        layout: centered-phone-cta
+        approach: paint-moment
+        copy_key: "Screen 16"     # Master Pool Section A
+        mock_data:
+          phone_content:
+            nav_title: Today
+            hero_block:
+              kind: hero-next-dose
+              medication: "Morning vitamin"   # generic per Guardrails
+              subtitle: "Next dose · 9:00 AM"
+              cta_label: "Confirm dose"
+        keywords_ocr: [next dose, confirm, today, hero card, family sees, one tap]
+
+      # Added 2026-05-12 (IOS-SCR-01B).
+      # Hero #3 — shared family log showing multi-caregiver attribution.
+      # Core value: real-time coordination. Captures DoseLogView with mock data.
+      - id: SS1.7
+        order: 7
+        slug: shared-family-log
+        layout: full-bleed-ui
+        approach: state-outcome
+        copy_key: SS1.7
+        mock_data:
+          source_screen: DoseLogView
+          log_entries:
+            - { dependent: "Mom", caregiver: "Anna", time: "8:03 AM", status: given }
+            - { dependent: "Mom", caregiver: "Mike", time: "12:01 PM", status: given }
+          show_caregiver_attribution: true
+        keywords_ocr: [shared log, family coordination, who gave, caregiver, dose history, real-time]
+
+      # Added 2026-05-12 (IOS-SCR-01B).
+      # Hero #4 — double-dose protection alert (unique USP).
+      # Captures DoubleDoseAlertView shown when a second caregiver tries to confirm.
+      - id: SS1.8
+        order: 8
+        slug: double-dose-protection
+        layout: single-with-alert
+        approach: kill-pain
+        copy_key: SS1.8
+        mock_data:
+          source_screen: ConfirmDoseSheet
+          blocked_caregiver: "Anna"
+          blocked_time: "8:03 AM"
+          alert_overlay: DoubleDoseAlertView
+        keywords_ocr: [double dose, already given, protection, Anna, blocked, safe]
+
+  grandparent:
+    audience: "65+, minimal tech experience, larger type"
+    emotion: "One tap. No confusion."
+    theme: grandparent
+    screens:
+      - id: SS2.1
+        order: 1
+        slug: built-for-grandparents
+        layout: centered-phone-warm-scene
+        approach: state-outcome
+        copy_key: SS2.1
+        mock_data:
+          ui_mode: simplified
+          scene: warm_illustration_elderly
+        keywords_ocr: [grandparent, elderly, simple, large text, senior, medication reminders]
+
+      - id: SS2.2
+        order: 2
+        slug: one-tap-no-confusion
+        layout: contrast
+        approach: paint-moment
+        copy_key: SS2.2
+        theme_override: contrast   # uses contrast theme (dark bg)
+        mock_data:
+          social_proof_badge:
+            stars: 5
+            quote: "My mom finally uses this"
+            attribution: "— Sarah K."
+          minimal_button: "✅ I TOOK IT"
+        keywords_ocr: [one tap, no confusion, large text, simple, senior friendly]
+
+      - id: SS2.3
+        order: 3
+        slug: your-family-knows
+        layout: layered-notification
+        approach: paint-moment
+        copy_key: SS2.3
+        mock_data:
+          notification_text: "Anna saw you took your morning dose ✅"
+          family_reaction: "❤️"
+          scene: grandparent_with_grandchild
+        keywords_ocr: [family sees, peace of mind, no worrying, caregiver notified]
+
+      - id: SS2.4
+        order: 4
+        slug: scan-youre-in
+        layout: hero-element
+        approach: kill-pain
+        copy_key: SS2.4
+        mock_data:
+          hero_symbol: "qrcode.viewfinder"
+          minimal_text: "Scan"
+        keywords_ocr: [join family, QR scan, no signup, easy setup, grandparent]
+
+      - id: SS2.5
+        order: 5
+        slug: calm-not-cluttered
+        layout: full-bleed-ui
+        approach: paint-moment
+        copy_key: SS2.5
+        mock_data:
+          source_screen: GrandparentHomeView
+          ui_state: 3_doses_clean
+          show_disclaimer: true   # last screen of CPP per Guardrails
+        keywords_ocr: [calm, no ads, simple, clean, medication reminders, clutter free]
+
+      # Added 2026-05-02 (IOS-SCR-INFRA-V2 / IOS-SCR-01A unblock).
+      # PM Path B chosen — copy from Master Pool Screen 06 (Section A).
+      # Hero #2 differentiator — only competitor angle truly built for grandparents.
+      - id: SS2.6
+        order: 6
+        slug: grandparent-mode-large-button
+        layout: centered-phone-large-button
+        approach: kill-pain
+        copy_key: "Screen 06"     # Master Pool Section A
+        mock_data:
+          phone_content:
+            nav_title: Today
+            primary_block:
+              kind: grandparent-large-button
+              secondary: "Morning vitamin · 9:00 AM"   # generic per Guardrails
+              primary_label: "I TOOK IT"
+        keywords_ocr: [grandparent mode, large button, simple, one tap, senior friendly, big text]
+
+  parent:
+    audience: "Parents 25-45, kids 2-12, chronic/temp meds"
+    emotion: "Peace of mind for your family."
+    theme: parent
+    screens:
+      - id: SS3.1
+        order: 1
+        slug: never-miss-childs-dose
+        layout: centered-phone-warm-scene
+        approach: kill-pain
+        copy_key: SS3.1
+        mock_data:
+          source_screen: HomeView
+          dependent: child
+          next_dose_timer: "2h 15m"
+          scene: calm_child
+        keywords_ocr: [child medication, never miss, dose reminder, parent, kids health]
+
+      - id: SS3.2
+        order: 2
+        slug: both-parents-one-log
+        layout: two-phone-overlay
+        approach: state-outcome
+        copy_key: SS3.2
+        mock_data:
+          phone_dad:
+            caregiver: "Dad"
+            color: "#3B82F6"
+          phone_mom:
+            caregiver: "Mom"
+            color: "#F97316"
+          log_entry: "Dad confirmed morning dose at 8:00 AM"
+        keywords_ocr: [both parents, shared log, sync, family coordination, dad mom]
+
+      - id: SS3.3
+        order: 3
+        slug: 7-day-streak-hooked
+        layout: stat-hero
+        approach: paint-moment
+        copy_key: SS3.3
+        mock_data:
+          streak_days: 7
+          chain_visualization: 7_green_days
+          milestone_celebration: true
+        keywords_ocr: [streak, milestone, celebrate, progress, perfect week, achievement]
+
+      - id: SS3.4
+        order: 4
+        slug: doctor-ready-pdf
+        layout: big-number
+        approach: kill-pain
+        copy_key: SS3.4
+        mock_data:
+          big_number: "97%"
+          caption: "Adherence — last 30 days"
+          pdf_preview: true
+          export_button_color: "#00C896"   # canonical brand
+        keywords_ocr: [doctor visit, PDF report, adherence, export, pediatrician, medical record]
+
+      - id: SS3.5
+        order: 5
+        slug: no-internet-no-problem
+        layout: contrast
+        approach: kill-pain
+        copy_key: SS3.5
+        theme_override: contrast
+        mock_data:
+          icon: "icloud.slash"
+          icon_size_formula: "cW * 0.25"
+          sync_indicator: "✓ synced when online"
+          show_disclaimer: true   # last screen of CPP per Guardrails
+        keywords_ocr: [offline, works anywhere, no internet, sync later, reliable]
+
+# ---------------------------------------------------------------------------
+# Persona color system (cross-screen identity)
+# Used only as identity rings, NEVER as primary action color
+# ---------------------------------------------------------------------------
+persona_colors:
+  anna: "#3B82F6"   # blue — primary caregiver
+  mike: "#F97316"   # orange — second caregiver
+  mom:  "#A855F7"   # purple — grandparent
+
+# Locale name overrides (per Marketing/appstore-screenshots-copy.md design notes)
+persona_names:
+  en-US: { anna: "Anna",   mike: "Mike",    mom: "Mom" }
+  ru:    { anna: "Анна",   mike: "Михаил",  mom: "Мама" }
+  fr-FR: { anna: "Sophie", mike: "Marc",    mom: "Maman" }
+  es-ES: { anna: "Ana",    mike: "Miguel",  mom: "Mamá" }
+
+# ---------------------------------------------------------------------------
+# Mock medication name per locale (per Guardrails — no real drug names)
+# ---------------------------------------------------------------------------
+mock_medication_names:
+  en-US: ["Morning vitamin", "Evening drops"]
+  ru:    ["Утренний витамин", "Вечерние капли"]
+  fr-FR: ["Vitamine du matin", "Gouttes du soir"]
+  es-ES: ["Vitamina de la mañana", "Gotas de la noche"]
+
+# ---------------------------------------------------------------------------
+# Layout constants (preserved from v1.0 + extended)
+# ---------------------------------------------------------------------------
+layout:
+  headline_top_padding_formula: "cW * 0.062"        # 80pt at 1290
+  headline_horizontal_padding_formula: "cW * 0.037" # 48pt at 1290
+  headline_to_subtitle_gap_formula: "cW * 0.009"    # 12pt at 1290
+  subtitle_to_phone_gap_formula: "cW * 0.05"        # 64pt at 1290
+  phone_horizontal_padding_formula: "cW * 0.046"    # 60pt at 1290
+  phone_bottom_bleed_formula: "cW * 0.046"          # 60pt at 1290 (translate-y)
+  shadow:
+    radius: 24
+    y_offset: 12
+    opacity: 0.2
+
+# ---------------------------------------------------------------------------
+# Output naming convention
+# Pattern: iphone-{device_short}-{cpp}-{order}-{slug}-{locale_short}.png
+# Example: iphone-69-caregiver-01-replace-group-chat-en.png
+# ---------------------------------------------------------------------------
+output:
+  directory: "DoseSync/AppStoreAssets/screenshots"
+  filename_pattern: "iphone-{device_short}-{cpp}-{order:02d}-{slug}-{locale_short}.png"
+  format: PNG
+  color_mode: RGB              # CRITICAL: no alpha (App Store rejects)
+  flatten_alpha: true          # explicit flatten step in renderer
+  max_size_mb: 8               # ASC limit per file
+
+# ---------------------------------------------------------------------------
+# Source screens (captured from real iOS app via XcodeBuildMCP)
+# Used by layouts: full-bleed-ui, single-with-alert, two-phone-overlay,
+#                   centered-phone-warm-scene, layered-notification, full-bleed-ui
+# ---------------------------------------------------------------------------
+source_screens:
+  directory: "DoseSync/AppStoreAssets/source"
+  required:
+    - { slug: home-caregiver,        view: HomeView,           cpp: caregiver }
+    - { slug: home-grandparent,      view: GrandparentHomeView, cpp: grandparent }
+    - { slug: home-parent-child,     view: HomeView,           cpp: parent }
+    - { slug: doselog-attribution,   view: DoseLogView,        cpp: caregiver }
+    - { slug: doselog-parents,       view: DoseLogView,        cpp: parent }
+    - { slug: history-calendar,      view: DoseLogView,        cpp: caregiver }
+    - { slug: notification-confirm,  view: HomeView,           cpp: grandparent }
+    - { slug: family-feed,           view: HomeView,           cpp: caregiver }
+    - { slug: streak-badge,          view: HomeView,           cpp: parent }
+    - { slug: today-clean-gp,        view: GrandparentHomeView, cpp: grandparent }
+
+# ---------------------------------------------------------------------------
+# Content guardrails (preserved from v1.0 + extended)
+# ---------------------------------------------------------------------------
+content_guardrails:
+  # Strings that must NOT appear in any source_state.entries or text overlay
+  banned_in_mock_data:
+    - amoxicillin
+    - ibuprofen
+    - aspirin
+    - nurofen
+    - tylenol
+    - paracetamol
+    - metformin   # added 2026-04-19 per Guardrails
+    - insulin
+  # Regex — no dosages visible
+  banned_patterns:
+    - '\b\d+\s*(?:mg|mcg|ml|g|IU)\b'
+  # Headlines must not contain medical claims
+  banned_in_headlines:
+    - clinically
+    - medically
+    - FDA
+    - proven
+    - cures
+    - prescription
+    - diagnose
+  # PNG export requirements (v2.0 addition)
+  png_export:
+    color_mode: RGB
+    flatten: true
+    max_size_mb: 8
+  # Verification gates (v2.0 addition)
+  thumbnail_readability_test: required   # 1-second arm's-length
+
+# ---------------------------------------------------------------------------
+# Brand color enforcement (v2.0 addition — per spec 31 Out-of-Canon launch prep)
+# ---------------------------------------------------------------------------
+brand_color_enforcement:
+  canonical_brand: "#00C896"             # Color.DS.V2.Brand.base
+  banned_colors:
+    - "#34C759"   # iOS system green — replaced
+    - "#0DBD8C"   # legacy DoseSync green — replaced
+    - "#007AFF"   # iOS system blue (for primary action only — kept for non-action persona rings)
+  # Persona ring colors (identity-only, never primary action)
+  preserved_persona_rings:
+    - "#3B82F6"   # Anna
+    - "#F97316"   # Mike
+    - "#A855F7"   # Mom

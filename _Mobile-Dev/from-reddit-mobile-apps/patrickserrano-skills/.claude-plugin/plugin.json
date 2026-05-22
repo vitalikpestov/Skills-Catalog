@@ -1,0 +1,21 @@
+{
+  "name": "ios-swift-skills",
+  "version": "1.0.0",
+  "description": "A collection of Claude Code skills for iOS, Swift, SwiftUI development, and release workflows",
+  "author": {
+    "name": "Patrick Serrano",
+    "url": "https://github.com/patrickserrano"
+  },
+  "repository": "https://github.com/patrickserrano/skills",
+  "license": "MIT",
+  "keywords": [
+    "ios",
+    "swift",
+    "swiftui",
+    "xcode",
+    "performance",
+    "debugging",
+    "release"
+  ],
+  "skills": "./skills/"
+}

@@ -1,0 +1,22 @@
+# interaction-design
+Design meaningful interactions with micro-animations, state machines, gestures, error handling, and feedback patterns.
+## Skills (15)
+- **micro-interaction-spec** — Specify micro-interactions with trigger, rules, feedback, and loop/mode definitions.
+- **animation-principles** — Apply animation principles to UI motion for purposeful, polished interactions.
+- **state-machine** — Model complex UI behavior as finite state machines with states and transitions.
+- **gesture-patterns** — Design gesture-based interactions for touch and pointer devices.
+- **error-handling-ux** — Design error prevention, detection, and recovery experiences.
+- **loading-states** — Design loading, skeleton, and progressive content reveal patterns.
+- **feedback-patterns** — Design system feedback for user actions including confirmations and status.
+- **hicks-law** — Apply Hick's Law to reduce decision time by limiting the number of simultaneous choices presented to users.
+- **millers-law** — Apply Miller's Law — chunk information into groups of ~4 to work within working memory limits.
+- **fitts-law** — Apply Fitts's Law to size and position interactive targets for fast, accurate interaction.
+- **doherty-threshold** — Apply the Doherty Threshold — keep system response times under 400ms to maintain user flow.
+- **form-design** — Design forms that minimize friction, prevent errors, and guide users to successful completion.
+- **onboarding-design** — Design first-run experiences that get users to value quickly without overwhelming them.
+- **navigation-patterns** — Select and design navigation patterns that match product structure, user tasks, and platform conventions.
+- **search-ux** — Design search experiences that help users find what they need, recover from failure, and refine results.
+## Commands (3)
+- `/design-interaction` — Design a complete interaction flow for a feature or component.
+- `/map-states` — Model the states and transitions for a complex UI component.
+- `/error-flow` — Design a complete error handling flow for a feature.

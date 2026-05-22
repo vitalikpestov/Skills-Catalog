@@ -1,0 +1,80 @@
+# Figma ↔ Swift token mapping for DoseSync
+# Version: 1.0
+# Used by /tokens-sync in Mode B (Figma → Code sync)
+
+version: "1.0"
+
+# ---------------------------------------------------------------------------
+# Source → target mappings
+# ---------------------------------------------------------------------------
+# figma: fully-qualified Figma Variable name (case-sensitive)
+# swift: colorset name WITHOUT leading "ds." (skill adds prefix)
+# ---------------------------------------------------------------------------
+
+mappings:
+  # Backgrounds / surfaces
+  - figma: "color/background/primary"
+    swift: "background"
+  - figma: "color/surface/primary"
+    swift: "surface"
+  - figma: "color/surface/secondary"
+    swift: "surfaceSecondary"
+
+  # Text
+  - figma: "color/text/primary"
+    swift: "textPrimary"
+  - figma: "color/text/secondary"
+    swift: "textSecondary"
+
+  # Accent
+  - figma: "color/accent/primary"
+    swift: "accent"
+  - figma: "color/accent/muted"
+    swift: "accentMuted"
+
+  # Utility
+  - figma: "color/border/separator"
+    swift: "separator"
+  - figma: "color/destructive"
+    swift: "destructive"
+
+  # Semantic status
+  - figma: "color/semantic/success"
+    swift: "success"
+  - figma: "color/semantic/warning"
+    swift: "warning"
+  - figma: "color/semantic/danger"
+    swift: "danger"
+  - figma: "color/semantic/muted"
+    swift: "muted"
+
+# ---------------------------------------------------------------------------
+# Name conventions
+# ---------------------------------------------------------------------------
+# If your Figma uses different naming conventions, edit mappings above.
+#
+# Common patterns:
+# - "color/accent/primary"   → ds.accent
+# - "brand/teal-500"          → ds.accent (brand-first)
+# - "semantic/success-light"  → ds.success
+#
+# Keep Figma names stable — changing them breaks mappings.
+# ---------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------
+# Figma fileKey (optional — can also be passed via skill invocation)
+# ---------------------------------------------------------------------------
+# Uncomment and set if DoseSync has a canonical Figma file:
+#
+# figma_file_key: "YOUR_FIGMA_FILE_KEY"
+# figma_page_name: "Design System"
+#
+# When set, /tokens-sync without args will still run in Mode B.
+# ---------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------
+# Tolerance for hex matching (prevents false "changed" from float imprecision)
+# ---------------------------------------------------------------------------
+tolerance:
+  # Per-channel tolerance on 0-255 scale
+  rgb_delta: 2

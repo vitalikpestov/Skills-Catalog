@@ -1,0 +1,9 @@
+# Normalize all text files to LF in the repository
+* text=auto eol=lf
+
+# Shell scripts — always LF (required for bash execution)
+*.sh text eol=lf
+
+# Markdown and JSON — always LF
+*.md text eol=lf
+*.json text eol=lf

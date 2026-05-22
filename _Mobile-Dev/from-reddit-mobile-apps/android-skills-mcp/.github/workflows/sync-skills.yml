@@ -1,0 +1,91 @@
+name: Sync android/skills
+
+on:
+  schedule:
+    # Every Monday at 09:00 UTC. Adjust to taste.
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Clone latest android/skills
+        run: git clone --depth=1 https://github.com/android/skills.git skills
+
+      - name: Record upstream HEAD
+        id: upstream
+        run: |
+          SHA=$(git -C skills rev-parse HEAD)
+          SHORT=$(git -C skills rev-parse --short HEAD)
+          echo "sha=$SHA" >> $GITHUB_OUTPUT
+          echo "short=$SHORT" >> $GITHUB_OUTPUT
+          echo "message=$(git -C skills log -1 --format='%s')" >> $GITHUB_OUTPUT
+
+      - name: Compare to last-synced commit
+        id: compare
+        run: |
+          LAST=$(cat .skills-commit 2>/dev/null || echo "")
+          if [ "$LAST" = "${{ steps.upstream.outputs.sha }}" ]; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "Upstream unchanged ($LAST). Nothing to do."
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "Upstream moved: $LAST → ${{ steps.upstream.outputs.sha }}"
+          fi
+
+      - uses: pnpm/action-setup@v4
+        if: steps.compare.outputs.changed == 'true'
+
+      - uses: actions/setup-node@v4
+        if: steps.compare.outputs.changed == 'true'
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - name: Install, build, and confirm tests pass
+        if: steps.compare.outputs.changed == 'true'
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm build
+          pnpm test
+
+      - name: Bump patch version
+        if: steps.compare.outputs.changed == 'true'
+        id: version
+        run: |
+          cd packages/mcp && npm version patch --no-git-tag-version
+          cd ../pack && npm version patch --no-git-tag-version
+          cd ../..
+          VERSION=$(node -p "require('./packages/mcp/package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Record new upstream commit
+        if: steps.compare.outputs.changed == 'true'
+        run: echo "${{ steps.upstream.outputs.sha }}" > .skills-commit
+
+      - name: Open PR
+        if: steps.compare.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: chore/sync-android-skills
+          delete-branch: true
+          commit-message: 'chore: sync android/skills upstream to ${{ steps.upstream.outputs.short }}'
+          title: 'chore: sync android/skills upstream (v${{ steps.version.outputs.version }})'
+          body: |
+            Automated sync of upstream [`android/skills`](https://github.com/android/skills).
+
+            **Upstream commit:** [`${{ steps.upstream.outputs.short }}`](https://github.com/android/skills/commit/${{ steps.upstream.outputs.sha }}) — ${{ steps.upstream.outputs.message }}
+
+            This PR:
+            - Updates `.skills-commit` to the new upstream SHA
+            - Bumps both packages to `${{ steps.version.outputs.version }}`
+
+            Tests pass on this branch. Merge then tag `v${{ steps.version.outputs.version }}` to publish.
+          labels: automated, skills-sync

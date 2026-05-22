@@ -1,0 +1,143 @@
+# UI Audit — Screens & Navigation
+# Version: 1.0
+# 5 top-level screens (tab bar) × 4 states = 20 screenshots
+
+version: "1.0"
+
+# ---------------------------------------------------------------------------
+# Capture states — 4 combinations
+# ---------------------------------------------------------------------------
+states:
+  - id: A
+    slug: light-normal
+    appearance: light
+    dynamic_type: normal
+    launch_args: []
+  - id: B
+    slug: light-xxl
+    appearance: light
+    dynamic_type: xxl
+    launch_args:
+      - "-UIPreferredContentSizeCategoryName"
+      - "UICTContentSizeCategoryAccessibilityXXL"
+  - id: C
+    slug: dark-normal
+    appearance: dark
+    dynamic_type: normal
+    launch_args: []
+  - id: D
+    slug: dark-xxl
+    appearance: dark
+    dynamic_type: xxl
+    launch_args:
+      - "-UIPreferredContentSizeCategoryName"
+      - "UICTContentSizeCategoryAccessibilityXXL"
+
+# ---------------------------------------------------------------------------
+# Screens to capture — tab bar level 1 only
+# ---------------------------------------------------------------------------
+screens:
+  - slug: home
+    label: Home
+    tab_index: 0
+    tab_accessibility_label: "Home"
+    notes: "HomeView — hero next dose card, adherence ring, dose list"
+
+  - slug: meds
+    label: Meds
+    tab_index: 1
+    tab_accessibility_label: "Meds"
+    notes: "MedicationListView — list of active medications"
+
+  - slug: doselog
+    label: Dose Log
+    tab_index: 2
+    tab_accessibility_label: "Dose Log"
+    notes: "DoseLogView — stats band + filters + history"
+
+  - slug: family
+    label: Family
+    tab_index: 3
+    tab_accessibility_label: "Family"
+    notes: "FamilyView — members + invite"
+
+  - slug: settings
+    label: Settings
+    tab_index: 4
+    tab_accessibility_label: "Settings"
+    notes: "SettingsView — preferences, account, privacy"
+
+# ---------------------------------------------------------------------------
+# Static analysis patterns (for Step 5)
+# ---------------------------------------------------------------------------
+static_analysis:
+
+  # S1: Interactive elements without accessibility label
+  missing_a11y_label:
+    severity: high
+    category: "Missing accessibility label"
+    detect:
+      # Button { ... } — likely needs label unless label is Text(...)
+      - pattern: 'Button\s*\{[^}]*Image\(systemName:'
+        description: "Icon-only Button without accessibilityLabel"
+        action: "Add .accessibilityLabel(\"...\") describing the action"
+      # tap gestures on Image
+      - pattern: 'Image\(systemName:[^\)]+\)[^.]*\.onTapGesture'
+        description: "Tappable Image without accessibilityLabel"
+        action: "Add .accessibilityLabel(\"...\")"
+
+  # S2: Touch targets smaller than 44pt
+  small_touch_target:
+    severity: medium
+    category: "Touch target < 44pt"
+    detect:
+      - pattern: '\.frame\(\s*(?:width|height):\s*([1-3]?\d)(?:\s*[,)])'
+        description: "Fixed frame dimension below 44pt on potentially interactive element"
+        action: "Increase frame to >= 44pt or wrap in larger tappable container"
+    exempt_contexts:
+      - "AppStoreAssets"
+      - "MilestoneShareCardView"
+      - "ShimmerModifier"
+      - ".accessibilityHidden(true)"
+
+  # S3: Hardcoded font sizes
+  hardcoded_font:
+    severity: medium
+    category: "Hardcoded font size (no Dynamic Type)"
+    detect:
+      - pattern: '\.font\(\.system\(size:\s*\d+'
+        description: "Hardcoded font size — won't scale with user's Dynamic Type setting"
+        action: "Use Font.DS.hero / Font.DS.title / Font.DS.body / Font.DS.caption instead"
+    exempt_contexts:
+      - "AppStoreAssets"
+      - "MilestoneShareCardView"
+      - "FirstDoseCelebrationView"   # .largeTitle already used
+      - "DoseLogStatsBand"   # intentional monospacedDigit
+
+  # S4: Direct black/white colors (Dark Mode risk)
+  direct_monochrome:
+    severity: low
+    category: "Direct black/white color (Dark Mode risk)"
+    detect:
+      - pattern: '\.(foregroundColor|foregroundStyle)\(\.white\)'
+        description: "Direct .white color — may be invisible in light mode or inconsistent"
+      - pattern: '\.(foregroundColor|foregroundStyle)\(\.black\)'
+        description: "Direct .black color — may be invisible in dark mode"
+      - pattern: 'Color\.white\s*\.opacity'
+        description: "Color.white with opacity — OK on gradients, risky on flat backgrounds"
+    exempt_contexts:
+      - "AppStoreAssets"
+      - "MilestoneShareCardView"
+      - "FirstDoseCelebrationView"   # intentional white on gradient
+      - "ScreenshotComposerView"     # marketing render
+
+# ---------------------------------------------------------------------------
+# Known-good references (whitelist — don't flag even if pattern matches)
+# ---------------------------------------------------------------------------
+whitelist:
+  files:
+    - "DoseSync/DoseSync/Views/Components/ShimmerModifier.swift"
+    - "DoseSync/DoseSync/Views/Components/AppStorePrivacyScreenView.swift"
+    - "DoseSync/DoseSync/Views/Components/MilestoneShareCardView.swift"
+  # Exact line fingerprints (file:line:pattern) can be added after first run
+  lines: []

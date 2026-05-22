@@ -36,3 +36,13 @@ _Docs-Content/Prompt Engineer/DUELENS_FULL_CONTEXT_v2.md
 
 # Архив статей (12k файлов, не скиллы)
 _Docs-Content/Prompt Engineer/AI NovaSapiens/
+
+# Вложенные .git/ от клонированных репо (vendored)
+**/.git/
+
+# Build артефакты (бинарники, не для git)
+**/Build/
+
+# Большие test fixtures (gstack security-bench и подобные)
+**/test/fixtures/*.json
+**/tests/fixtures/*.json
