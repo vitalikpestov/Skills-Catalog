@@ -5,6 +5,8 @@
 > Папка: `MASTER skills/_Mobile-Dev/`
 > Структура: 11 разделов · ~70 mobile-related скиллов в `_Mobile-Dev/` + cross-refs на другие категории vault
 > Навигатор по папке: см. `_Mobile-Dev/_index.md` (структура), `_Mobile-Dev/Android/_index.md` (Android), README в каждой подпапке.
+>
+> 🎯 **Быстрый старт:** [`top-13-design-picks.md`](top-13-design-picks.md) — курируемая выборка 13 design-скиллов с decision matrix и рекомендованными сочетаниями для разных сценариев.
 
 ---
 
