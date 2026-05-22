@@ -25,6 +25,10 @@
 | Material Design 3 для Compose | `material-3-skill` *(в `_Mobile-Dev/Android/from-hamen/`)* |
 | Android / Compose / Jetpack | `android-skills` *(в `_Mobile-Dev/from-reddit-mobile-apps/`)* |
 | Universal agentic framework | `superpowers` *(в `_Mobile-Dev/Android/from-superpowers/`)* |
+| Web scraping / crawl | `firecrawl` *(в `_Engineering/firecrawl/`)* |
+| Web quality / Lighthouse / Core Web Vitals | `web-quality-skills-addyosmani` (parent) · `web-quality-audit` (sub) |
+| Планирование онбординга / экспериментов с файлами | `planning-with-files` *(в `_AI-Automation/`)* |
+| Полная коллекция Claude Code скиллов | `claude-code-skills-levnikolaevich` *(в `_AI-Automation/`)* |
 | React Native + Expo | `expo-skills` *(в `_Mobile-Dev/from-reddit-mobile-apps/`)* |
 | Mobile paywall / subscription | `paywall-optimization` · `subscription-lifecycle` *(в `_Mobile-Dev/from-vault-audit/product-monetization/`)* |
 | App icon AI generation | `snapai` *(в `_Mobile-Dev/from-reddit-mobile-apps/snapai/`)* |
@@ -195,6 +199,7 @@ Backend, DevOps, базы данных, тестирование, монитор
 | `env-secrets-manager` | .env safety, leak detection, key rotation |
 | `error-handling-patterns` | Error handling: exceptions, Result types, graceful degradation |
 | `fastapi-templates` | Production-ready FastAPI: async patterns, dependency injection |
+| `firecrawl` | **NEW** Web scraping / crawl product от mendableai. Полная кодовая база (Next.js, API). 50 MB |
 | `frontend-design` | Production-grade frontend interfaces |
 | `github-actions` | GitHub Actions workflows: testing, building, deploying |
 | `grafana-dashboards` | Production Grafana dashboards: real-time visualization, observability |
@@ -218,7 +223,8 @@ Backend, DevOps, базы данных, тестирование, монитор
 | `stripe-best-practices` | Stripe: payments, checkout, subscriptions, webhooks, Connect |
 | `supabase-developer` | Supabase: PostgreSQL, Auth, Storage, Real-time, Edge Functions, RLS |
 | `web-artifacts-builder` | Elaborate HTML artifacts: React, Tailwind CSS, shadcn/ui |
-| `web-quality-audit` | Web quality audit: performance, accessibility, SEO, Lighthouse |
+| `web-quality-audit` | Web quality audit: performance, accessibility, SEO, Lighthouse (один скилл, derived from web-quality-skills) |
+| `web-quality-skills-addyosmani` | **NEW** Parent collection от Addy Osmani: 150+ Lighthouse audits, Core Web Vitals (LCP, INP, CLS), WCAG 2.2, modern SEO. Stack-agnostic |
 | `webapp-testing` | Тестирование веб-приложений через Playwright |
 | `websocket-realtime` | Real-time: WebSocket, Socket.io, SSE, scaling strategies |
 | `websockets-realtime` | WebSockets real-time patterns (расширенная версия) |
@@ -238,8 +244,10 @@ Claude, MCP, агенты, Obsidian, n8n, автоматизация рабоч�
 | `Claude Code` | Claude Code CLI: хуки, slash commands, MCP, settings, IDE интеграция |
 | `claude-email-main` | Email automation через Claude |
 | `doc-coauthoring` | Structured workflow для co-authoring документации |
-| `humanizer-main` | Убирает AI-признаки из текста (Wikipedia "Signs of AI writing") |
+| `humanizer-main` | Убирает AI-признаки из текста (Wikipedia "Signs of AI writing"). v2.2.0 — `SOURCES.md` упоминает upstream `blader/humanizer` (базовая версия) |
 | `internal-comms` | Internal communications в форматах компании |
+| `planning-with-files` | **NEW** Планирование задач/онбординга/экспериментов через структурированные файлы. Author: OthmanAdi |
+| `claude-code-skills-levnikolaevich` | **NEW** Большая коллекция Claude Code скиллов (~2500 файлов, 29 MB) от levnikolaevich. Delivery workflow, A/B тесты, MCP integrations |
 | `knowledge-work-plugins-main` | Коллекция knowledge work плагинов |
 | `mcp-builder` | Создание MCP (Model Context Protocol) серверов для LLM-интеграций |
 | `mempalace` | Долгосрочная память: дворец памяти, векторизация, recall |

@@ -1,0 +1,19 @@
+{
+  "name": "addy-web-quality-skills",
+  "owner": {
+    "name": "Addy Osmani"
+  },
+  "metadata": {
+    "description": "Agent Skills for optimizing web projects against Google Lighthouse, Core Web Vitals, WCAG 2.2, and modern SEO."
+  },
+  "plugins": [
+    {
+      "name": "web-quality-skills",
+      "source": {
+        "source": "github",
+        "repo": "addyosmani/web-quality-skills"
+      },
+      "description": "Performance, Core Web Vitals, accessibility, SEO, and best-practices skills for any web stack."
+    }
+  ]
+}
