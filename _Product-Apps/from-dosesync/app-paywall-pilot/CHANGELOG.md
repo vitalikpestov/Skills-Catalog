@@ -1,0 +1,301 @@
+# Changelog
+
+## [Unreleased]
+
+### Added
+- `framework-meta.json` as single source of truth for version, counts, canonical research brief, and calculator paths
+- `tools/sync_repo_meta.py` + `.github/scripts/validate_repo_meta.py` to keep top-level docs aligned with repo facts
+- `tools/ltv_calculator.py` as importable calculator module with strict validation
+- `tests/test_ltv_calculator.py` for calculator regression coverage
+
+### Changed
+- README / SKILL / ROADMAP now point to `outputs/2026-paywall-research-v2.md` as canonical brief; legacy brief kept for history
+- SKILL taxonomy corrected from "three axes" to four axes
+- SKILL data-source section slimmed down to routing guidance instead of duplicating source database
+- ROADMAP migration strategy simplified: no planned symlink / re-export layer
+
+## [4.0.0] -- 2026-04-17
+
+**Reframed from "Claude Code skill" to "Framework".** No breaking changes — all v3.x installations continue to work at the same paths. This is a positioning / documentation upgrade to reflect what the project actually is.
+
+### Why this version
+
+Honest assessment: the repo grew from a single SKILL.md file (v1.0) through 16 modules, a Python calculator, 2 research briefs, 3 worked examples, audit checklist, migration playbook, and CI validation. Calling it "just a skill" stopped matching what users encounter when they clone the repo.
+
+### Added
+- **[ROADMAP.md](ROADMAP.md)** -- documents framework architecture and planned expansion to 5 adjacent domains (Onboarding v5, Retention v6, Growth v7, Pricing v8, Reviews v9). Also lists explicit non-goals.
+- **README Architecture section** -- 4-layer diagram (Skill / Knowledge / Tool / Reference) with "which layer do you need" use-case mapping.
+- **README Roadmap section** -- summary table of planned domains with priority and release targets.
+- **Framework positioning** throughout README -- replacing "skill"-only framing where it was misleading.
+
+### Changed
+- Hero title: "App Paywall Pilot" -> "Paywall Pilot Framework"
+- Hero subtitle: "AI copilot... for paywalls" -> "A framework for designing paywalls. AI skill + knowledge base + executable tool."
+- Badges: added "Framework: Paywall" badge signaling flagship domain + future expansion
+- "Use this when..." section: "the skill activates" -> "the framework activates"
+- "Modules" section header: "The skill is split" -> "The Skill layer is split"
+
+### Unchanged (intentionally)
+- File structure stays flat; domain folders arrive in v5.0 with backward-compat symlinks
+- All module paths remain stable
+- `SKILL.md` frontmatter and behavior unchanged -- Claude Code / other AI tools read it identically
+- `sources.json` structure unchanged
+- Python calculator unchanged
+- Repo name stays `app-paywall-pilot` (SEO / link stability)
+
+### Migration
+No action required. Existing `git clone ~/.claude/skills/app-paywall-pilot/` installations continue to function. New users get the framework positioning; existing users get unchanged functionality.
+
+## [3.8.0] -- 2026-04-16
+
+Layer 2 of academic foundations beyond v3.7.0 Kahneman base. Adds 9 rigorous behavioral-science concepts plus explicit replication-failure warning for ego depletion.
+
+### Added
+- **`outputs/2026-paywall-research-v2.md`** -- Layer 2 research brief with 12 concepts verified for primary citation, replication evidence, and paywall design rule. Includes provenance sidecar.
+- **`pricing-psychology.md`** -- new Layer 2 section with 9 academic-strong concepts:
+  12. **Fogg Behavior Model B = M × A × T** (Fogg 2009, Persuasive Tech proceedings, 1,900+ pubs ref) -- when motivation is borderline, reduce ability friction
+  13. **Choice Overload** (Iyengar & Lepper 2000, JPSP) -- 6-jam vs 24-jam study (10x conv difference); 2-3 plans is the sweet spot. Includes Scheibehenne 2010 meta-analysis caveat.
+  14. **IKEA Effect** (Norton, Mochon, Ariely 2012, JCP) -- self-made products valued as much as expert-made; explains long-onboarding paywalls (Noom, Flo, Cal AI). Completion required.
+  15. **Hyperbolic Discounting** (Laibson 1997, QJE) -- present bias; explains weekly-plan dominance and per-day framing
+  16. **Goal-Gradient Effect** (Kivetz, Urminsky, Zheng 2006, JMR) -- effort accelerates near reward; bonus head-start works (12-stamp card with 2 free completes faster than regular 10-stamp)
+  17. **Negativity Bias** (Baumeister et al 2001, RGP, 10K+ citations) -- bad outweighs good across all domains; refund rate matters more than conversion rate
+  18. **Costly Signaling** (Spence 1973, QJE, Nobel 2001) -- premium pricing signals quality; explains 3x LTV uplift of high-priced apps
+  19. **Reactance Theory** (Brehm 1966) -- threatened freedom triggers opposite behavior; fake urgency backfires
+  20. **Sunk Cost Fallacy** (Arkes & Blumer 1985, OBHDP) -- past investment commits future behavior; combines with IKEA Effect + Goal-Gradient in long onboarding
+- **Explicit ego-depletion replication-failure warning** in pricing-psychology.md: Hagger 2016 (24 labs, 2,141 participants) + Vohs 2016 (36 labs, 3,531 participants) both found no effect. Do NOT cite as mechanism.
+- **Practitioner frameworks section** clearly labeled as Operator Insight (not academic): Hooked Model (Eyal 2014) and Atomic Habits identity (Clear 2018), with underlying academic basis cited (Skinner / IKEA / Sunk Cost for Hooked; Bem 1972 + Cialdini for identity habits).
+- **`glossary.md`** -- 12 new behavioral concept definitions (9 Layer 2 + ego depletion warning + 2 practitioner frameworks).
+- **`sources.json`** -- 11 new academic entries with full citations, journals, sample sizes where applicable.
+
+### Changed
+- **SKILL.md MODULES table** -- pricing-psychology description updated to "20-concept academic foundation" with full breakdown.
+- **SKILL.md DATA SOURCES table** -- 9 new bold rows for Layer 2 academic foundations + ⚠️ ego depletion entry.
+- **README.md** -- badge "Kahneman 11 concepts" -> "Academic 20 concepts"; sources count 69 -> 80.
+
+### Critical correction
+The skill no longer attributes "keep paywalls simple" to ego depletion / decision fatigue. The mechanism is now correctly cited as **Choice Overload (Iyengar & Lepper 2000) + System 1 (Kahneman 2011) + WYSIATI (Kahneman 2011)**. The practical UX rule is unchanged; the underlying science is upgraded.
+
+## [3.7.0] -- 2026-04-16
+
+Major expansion of Kahneman behavioral foundations. Now functions as the trusted base of all paywall design recommendations.
+
+### Added
+- **`pricing-psychology.md` — 11-concept Kahneman foundation section.** Each concept gets: full citation (paper, journal, year), the empirical finding, mobile paywall application with concrete examples, and a design rule. Concepts:
+  1. **Prospect Theory & Loss Aversion** (Kahneman & Tversky 1979, Econometrica, 65K+ citations, 2002 Nobel)
+  2. **Anchoring** (Tversky & Kahneman 1974, Science)
+  3. **System 1 / System 2** (Kahneman 2011, *Thinking, Fast and Slow*)
+  4. **Endowment Effect** (Kahneman, Knetsch & Thaler 1990, Journal of Political Economy)
+  5. **Peak-End Rule** (Kahneman et al 1993, Psychological Science)
+  6. **Default Effect / Status Quo Bias** (Kahneman, Knetsch, Thaler 1991, Journal of Economic Perspectives)
+  7. **Mental Accounting** (Thaler 1980-1999, built on Kahneman)
+  8. **WYSIATI** (Kahneman 2011, *Thinking, Fast and Slow* Ch. 7)
+  9. **Substitution Heuristic** (Kahneman 2011, Ch. 9)
+  10. **Planning Fallacy** (Kahneman & Tversky 1979)
+  11. **Hedonic Adaptation** (Kahneman, Diener, Schwarz 1999)
+- Summary table: Kahneman concept → direct paywall design lever.
+- **`sources.json` — 11 new academic entries** with full citations, journal, sample size where applicable.
+- **`glossary.md` — new "Behavioral / Cognitive Concepts" section** with quick definitions for all 11 Kahneman concepts plus Decoy Effect and Cialdini, each linking source and paywall use.
+
+### Changed
+- **`copy-library.md`** — headline formulas behavioral lens upgraded:
+  - Loss-frame headline (#7) now cites Kahneman & Tversky 1979 Prospect Theory directly with "recommended default for trial expiry" guidance
+  - All headlines linked to System 1 requirement (3-second comprehension)
+  - Social Proof Templates section now opens with Substitution Heuristic explanation: why social proof beats feature lists scientifically (brain swaps "is this worth $X?" for "do I trust this?")
+- **`decision-trees.md` Tree 4 (plan architecture)** — added Default Effect citation as the scientific backing for "always pre-select a plan." Added WYSIATI rule: "anything below scroll fold doesn't exist for the decision."
+- **`screen-anatomy.md`** — 3-second rule now scientifically grounded as System 1 decision window. Above-fold rules now grounded in WYSIATI as the strongest argument for Apple "billed amount most prominent" rule.
+- **SKILL.md DATA SOURCES table** — added 7 Kahneman papers explicitly (Prospect Theory promoted to bold), Mental Accounting (Thaler), and the consolidated Kahneman 2011 reference covering System 1/2 + WYSIATI + Substitution.
+- **SKILL.md MODULES table** — pricing-psychology description updated to reflect 11-concept Kahneman foundation.
+
+### Note on attribution
+This is a **trusted base** layer. Where Adapty/RC/Superwall vendor data exists, it's directional. Where Kahneman is cited, it's foundational behavioral science. Design choices grounded in Kahneman should be considered durable; vendor-data-only choices should be treated as Operator Insight or Hypothesis until the underlying mechanism is also explained.
+
+## [3.6.0] -- 2026-04-16
+
+Data refresh + README redesign.
+
+### Changed
+- **README header redesigned** with jobs-to-be-done framing. New "Use this when…" table maps 10 concrete user situations to "what to ask your AI" + "which modules activate". New "What you get" table maps 6 outputs to deliverables + powered-by modules. Hero badges upgraded to for-the-badge style. Anchor links + table-of-contents added.
+- **ChatGPT teardown trimmed** to remove model-version trivia (GPT-5.x specifics change every quarter and are not paywall-design relevant). Now focuses on the durable lessons: $20/mo consumer baseline, $200/mo premium ceiling (10x Plus), $8/mo geo-tier for emerging markets. Added explicit note: "don't put model version names in your paywall copy unless you commit to updating it every quarter."
+- ChatGPT pricing-tier source updated: was "Free/Go/Plus/Business/Enterprise/Edu" (outdated), now "Free/Go/Plus/Pro/Business/Enterprise" (April 2026 verified via OpenAI public pricing page).
+- ChatGPT pricing source URL updated to https://chatgpt.com/pricing/
+
+### Note
+The skill is for **all subscription apps**, not just AI. ChatGPT is one of 11 teardowns and AI is one of 10 categories. Treat AI examples as comparable references, not as the focus.
+
+## [3.5.0] -- 2026-04-16
+
+Phase 3 of follow-up improvements. Adds polish modules (refund management, cohort analysis), worked-audit examples, audit checklist, migration playbook, and CI validation.
+
+### Added
+- **`modules/refund-management.md`** -- 2026 refund baselines per plan/region, prevention sequence (in-app + push timeline), Apple Consumption API for refund decline (with Swift example), Subscription Pause as alternative, channel-level refund diagnostic flowchart.
+- **`modules/cohort-analysis.md`** -- three cohort types explained (install / trial / calendar), how to read RC/Adapty/Apphud dashboards correctly, 7 common cohort mistakes, healthy retention curve patterns by plan, pre/post-change comparison setup.
+- **`docs/audit-checklist.md`** -- standalone printable 50+ item checklist for manual review before App Store submission. 7 sections (Apple compliance, field reports, copy, pricing, localization, accessibility, implementation) plus quick triage of top 10 items.
+- **`docs/migrations/from-toggle-paywall.md`** -- migration playbook for apps caught in Apple's Jan 2026 toggle ban. Apple's exact cited reason. 4 compliant alternatives (separate plan cards, trial-on-annual-only, multi-plan comparison, personalized). Step-by-step migration, expected impact data.
+- **`examples/audit-h-and-f-app.md`** -- worked audit for fictional H&F app showing full 12-section DEFAULT OUTPUT FORMAT with calculator-predicted LTV impact.
+- **`examples/audit-ai-app.md`** -- worked audit for AI app emphasizing post-aha placement, ChatGPT $20 baseline, geo-tier pricing for emerging markets.
+- **`examples/audit-productivity-app.md`** -- worked audit for Productivity app showing the counter-intuitive trial economics (direct buyers > trial buyers per RC 2026), comparison-table presentation pattern, sophisticated audience pricing.
+- **`.github/workflows/validate.yml`** -- CI pipeline that runs on push and PR: validates sources.json structure (required fields, allowed evidence classes), checks all internal markdown links resolve, smoke-tests LTV calculator with both direct-CR and trial-funnel inputs, enforces SKILL.md size guard (1500 lines max).
+- **`.github/scripts/validate_sources.py`** -- standalone sources.json validator.
+- **`.github/scripts/validate_links.py`** -- standalone link validator (caught 3 broken links during initial run).
+
+### Changed
+- Module count: 14 -> 16
+- Added docs/ tree with audit-checklist + migrations/
+- Added examples/ tree with 3 worked audits
+- SKILL.md MODULES table updated with all Phase 3 entries
+
+### Fixed
+- 3 broken internal links in docs/migrations/from-toggle-paywall.md (off-by-one path depth)
+
+## [3.4.0] -- 2026-04-16
+
+Phase 2 of follow-up improvements. Adds foundational modules that fill gaps identified after Phase 1: continuity onboarding-paywall, lifecycle messaging, canonical metric definitions, executable Python calculator.
+
+### Added
+- **`modules/onboarding-paywall-handoff.md`** -- continuity principle (core principle 10) made concrete. 7 onboarding patterns linked to paywall: Noom quiz (77 screens), Cal AI demo-first, Headspace segmented + day/night, Duolingo goal-first, Strava aha-moment, Flo empathy, reverse trial. Loading-screen bridge templates with timing rules. Decision rule for short vs medium vs long onboarding by LTV.
+- **`modules/notifications-lifecycle.md`** -- previously missing area. Push + email sequences for trial (Blinkist Day-5 +1,200% opt-in), transaction abandon (Superwall 17% revenue), renewal-risk (Server Notifications V2), billing-issue (system sheet), win-back (iOS 18+ Apple Win-Back). Permission strategy with timing benchmarks. Copy templates per scenario. Tooling comparison (OneSignal / FCM / Customer.io / Iterable / Klaviyo).
+- **`modules/glossary.md`** -- canonical definitions for ARPU vs ARPPU, gross LTV vs RLTV, CR variants (effective CR breakdown), MRR/ARR, CAC variants (CPI/CPR/CAC/eCAC), ROAS, retention vs renewal vs churn, plan architecture terms (Subscription Group vs Base Plan + Offer), data-source class definitions. Plus 24-acronym quick reference.
+- **`tools/ltv-calculator.py`** -- executable Python implementation of unit-economics-calculator.md. CLI + JSON I/O modes. Implements all default retention multipliers, performance grading, expert advice engine. Verified output matches the worked example in the module ($48.44 ARPPU 7d, 1.26:1 LTV:CAC at 4yr). Runs in any environment with Python 3.
+
+### Changed
+- Module count: 11 -> 14
+- SKILL.md MODULES table updated with all Phase 2 entries
+
+## [3.3.0] -- 2026-04-16
+
+Phase 1 of follow-up improvements after analyzing adaptyteam/growth-expert-skill. Closes the operational/numerical gap (we were strong on strategy, weak on calculator-style guidance and CAC).
+
+### Added
+- **`modules/unit-economics-calculator.md`** -- conversational LTV / ARPU / ROAS / breakeven calculator. Step-by-step input collection, default retention multipliers per plan type, performance grading thresholds (Excellent / Good / Average / Below / Critical), expert advice engine with 11 conditional recommendations, scenario modeling, full worked example. Inspired by adaptyteam/growth-expert-skill calculator pattern, extended with cross-vendor (RC + Superwall + AppsFlyer) thresholds.
+- **`modules/indie-dev-faq.md`** -- 35+ direct-answer Q&A grouped into Pricing & Plans, Trials, Conversion & Funnel, Retention & Churn, Markets & Geography, Acquisition & UA, Compliance & Apple, Strategy & Growth. Each answer = threshold + verdict + one action with cited source.
+- **`modules/cac-acquisition.md`** -- previously missing area. CAC formula + variants (CPI / CPR / CAC / eCAC), 2026 mobile CAC benchmarks for iOS / Android premium and emerging markets, channel CPI table (ASA / Meta / TikTok / Google / Snap / Reddit / Twitter / Influencer), LTV:CAC thresholds with verdicts, channel mix strategy by stage, MMP comparison (AppsFlyer / Adjust / Singular / RevenueCat), ASA campaign-type breakdown, Web2App economics, common CAC mistakes, when CAC doesn't apply.
+- **RESPONSE MODE: PICK ONE** section in SKILL.md -- explicit guidance to match response depth to question. Quick mode (single tactical Q) vs Calculator mode vs Pattern mode vs Full audit vs Compliance triage. Stops the skill from running 12-section audit when user asked one question.
+- **QUICK MODE FORMAT** in SKILL.md -- Verdict / Reason / Action template for single-question responses.
+- **The Hollow Middle** subsection in pricing-psychology.md -- 41% subscription fatigue, $5-10/mo dead zone, 2026 trend toward either $30+/mo measurable outcomes OR $5/wk + free tier.
+- **Apple Small Business Program** subsection in pricing-psychology.md -- 15% vs 30% commission at <$1M revenue, +17.6% net ARPU instantly. Highest-leverage zero-effort change for indie devs.
+
+### Changed
+- ANTI-PATTERNS expanded from 17 to 20 (added: Hollow middle pricing, Paying 30% when SBP-eligible, Optimizing without an MMP)
+
+## [3.2.0] -- 2026-04-16
+
+### Added
+- **8 deep-dive modules** under `modules/`:
+  - `copy-library.md` -- 12 headline formulas, benefit patterns, CTA templates, banned words, locale-specific length expansion factors and tone formality cheatsheet for 12+ locales
+  - `teardowns.md` -- annotated paywall analyses for Calm, Duolingo, Noom, Cal AI, Tinder, Strava, Headspace, Blinkist, Flo, ChatGPT, AI companion apps; sourced from Sub Club Podcast, Adapty Library, Growth.Design, Purchasely, ScreensDesign, Kristen Berman, CNBC
+  - `pricing-psychology.md` -- Tversky-Kahneman 1981 framing (Science, 17K+ citations), Anderson-Simester 2003 ($9 endings field experiment), Thomas-Morwitz 2005 (left-digit cognition), Ariely Decoy Effect with replication caveats, Cialdini 7 principles mapped to mobile paywall context with 2024 Springer research on which principles are most influential
+  - `decision-trees.md` -- 10 diagnostic flowcharts for access model choice, low conversion triage, plan architecture, surface choice, when-to-test ranking, compliance triage, refund diagnosis, vendor-data conflict resolution
+  - `category-deep-dives.md` -- per-category economics for H&F, Gaming, Productivity, Lifestyle, Education, AI, Photo & Video, Travel, Shopping, B2B; geography cuts NA/WE/IN-SEA
+  - `screen-anatomy.md` -- visual hierarchy, F-pattern layout, thumb zone, spacing rhythm, pricing block anatomy, accessibility (WCAG AA, Dynamic Type, VoiceOver), dark mode, safe areas
+  - `localization.md` -- App Store auto-tier vs manual per-territory vs geo-tier strategy, copy length expansion factors, RTL handling, formality cheatsheet for 12+ locales
+  - `android-parity.md` -- Play Billing concepts vs StoreKit, EU DMA implications, Android refund reality (31% involuntary failures vs iOS 14%), AppsFlyer 2026 Android growth data
+- **Research brief** at `outputs/2026-paywall-research.md` with full source manifest, methodology cross-references, and provenance sidecar
+- **3 new core principles** (10, 11, 12): Continuity from onboarding to paywall; Climb the copy ladder (Outcome > Benefit > Feature); First principles beat benchmarks below 1,000 subs/variant
+- **WHEN TO IGNORE BENCHMARKS** section with 8 explicit conditions where vendor data should not drive decisions
+- **BIG-APP TEARDOWNS** quick-reference table in SKILL.md (full breakdowns in module)
+- **Copy patterns quick reference** in SKILL.md (top 5 headline formulas, CTA pattern, banned words, decline pattern)
+- **AppsFlyer State of Subscriptions 2026** as a new data source (1.7B installs, 2,900 apps, $2.1B UA spend) -- adds Android growth and emerging-markets perspective missing from Adapty/RevenueCat
+- **Refund / billing failure** subsection in Benchmarks (Google Play 31% vs App Store 14% involuntary failures)
+- **Trial cancellation timing** subsection (3-day: 55.4% Day 0; 7-day: 39.8% Day 0)
+- **RLTV per payer** subsection by category, region, and price tier
+- **Academic** and **Platform Capability** evidence classes added to sources.json `_meta`
+- **20+ new sources.json entries** including academic foundations (Tversky-Kahneman 1981, Anderson-Simester 2003, Thomas-Morwitz 2005, Ariely 2008, Cialdini 1984, Springer 2024) and big-app teardown sources
+
+### Changed
+- **DEFAULT OUTPUT FORMAT** expanded from 8 sections to 12: added Copy variants (2-3), Layout sketch, Localization notes, Android delta
+- **CORE PRINCIPLES** expanded from 9 to 12
+- **ANTI-PATTERNS** expanded from 13 to 17 (added: testing copy before localizing, same SKU across all of EU, optimizing AI app retention, trial on weekly plans)
+- **DATA SOURCES** table expanded from 4 rows to 16, with full evidence-class column
+- Apple toggle paywall section updated with exact Apple-cited quote: "This design is confusing and may prevent users from understanding that they are committing to an auto-renewing subscription."
+
+## [3.1.0] -- 2026-04-16
+
+### Added
+- **Apple Guidance** evidence level (Level 2) -- sits between Apple Rule and Platform Capability for Apple documentation, WWDC sessions, and HIG recommendations not enforced as rejection criteria
+- **4th taxonomy axis: Surface / Rendering Layer** -- 6 surface types: Native StoreKit sheet, Provider remote paywall, Custom native screen, WebView hybrid, System-provided sheet, Push / notification deep-link surface
+- **New placements:** plan-upgrade (upsell to higher tier), value primer / bridge (pre-paywall framing)
+- **New access model:** credits / usage packs (Apple Guidance)
+- **Apple Analytics benchmarks** added to Discovery phase -- App Store Connect data as a first-party source
+- **Family Sharing** as trust lever and access model variant (Platform Capability)
+- **Plan upgrade** and **refund / support** stages in Lifecycle Monetization (now 10 stages)
+
+### Changed
+- Evidence ladder expanded from 6 to 7 levels (Apple Guidance inserted at Level 2, all subsequent levels renumbered)
+- A/B win rates downgraded from Vendor Aggregate Data to **Operator Insight** -- methodology not open, cannot verify independently
+- "Apps with 50+ experiments earn 18.7x more revenue" claim downgraded to **Operator Insight** -- correlation not causation, methodology unpublished
+- Apple Guidance vs Apple Rule distinction applied to subscription groups, freemium model, and metered model documentation
+- Design Patterns table uses evidence levels (Vendor Case Study, Vendor Aggregate Data, Operator Insight, Hypothesis) instead of "Proven"
+- Data Sources updated: removed Apphud and Sensor Tower (not directly cited in v3.1.0), added Apple Analytics
+- Contributing guidelines updated: "Label every recommendation" now references evidence levels instead of Rule/Pattern/Hypothesis
+
+### Removed
+- "Proven" label from Design Patterns Reference -- replaced by proper evidence level labels
+
+## [3.0.0] -- 2026-04-16
+
+### Added
+- 7-level Evidence Ladder replacing Rule / Pattern / Hypothesis system
+- 3-axis Taxonomy: Access Model (6 types), Placement (11 types), Presentation Pattern (9 types)
+- Category Matrix with 7 app categories and category-specific economics
+- Lifecycle Monetization covering 9 subscription stages
+- 5 new paywall types: Metered, Reverse Trial, One-Time Unlock, Renewal-Risk, Intent-Tiered
+- Discount & Promotional Offers section with depth guidance and compliance rules
+- Apple Offer Types reference (Introductory, Promotional, Offer Codes, Win-Back)
+- Field Reports section separating observed rejection patterns from official Apple Rules
+- sources.json manifest for every numeric claim
+
+### Changed
+- Deep restructure of entire SKILL.md -- taxonomy-first architecture
+- Evidence labeling moved from inline markers to formal Evidence Ladder with 6 levels
+- iOS Compliance Checklist split into Apple Rules (published) and Field Reports (observed)
+- All benchmarks carry explicit evidence level, source, and date
+- Source of Truth hierarchy simplified to 4 tiers
+
+### Removed
+- Redundant benchmark tables consolidated
+- Generic advice replaced by taxonomy-driven recommendations
+
+## [2.0.0] -- 2026-04-15
+
+### Added
+- Benchmark tables with source + date columns (Adapty, RevenueCat, Superwall, Apphud, Nami ML, Sensor Tower data)
+- 6 screen templates: Post-Onboarding, Feature Gate, Usage Limit, Transaction Abandon, Post-Close Welcome, Win-Back
+- Design Patterns Reference section with evidence labels (Proven / Pattern / Hypothesis)
+- Apple Offer Types Reference table (Introductory, Promotional, Offer Codes, Win-Back)
+- WWDC 2025 StoreKit 2 updates
+- Regional pricing and conversion data
+- Category-specific plan architecture data
+- Trial length impact analysis with nuanced interpretation
+- Market reality benchmarks (concentration, experimentation impact)
+- Open-source README and CHANGELOG
+
+### Changed
+- Rebuilt from revised v1.1.0 foundation -- kept Source of Truth hierarchy, Rule/Pattern/Hypothesis labeling, Core Principles, Anti-patterns
+- Enhanced iOS Compliance Checklist -- split into "Must have" and "Must NOT have" sections
+- Expanded A/B Test Win Rates table with 6 experiment types
+- DATA SOURCES section now lists all providers with dataset sizes
+
+### Removed
+- Commitment ritual / finger-hold pattern (moved to Anti-patterns)
+- Unsourced benchmark claims
+- Generic "Questions to Ask" section (replaced by targeted Phase 1 questions)
+
+## [1.1.0] -- 2026-04-15
+
+### Changed
+- Source of Truth hierarchy: Apple docs > StoreKit > provider docs > provider blogs
+- Added "How to Label Advice" -- Rule / Pattern / Hypothesis classification
+- Removed commitment rituals as default recommendation
+- Added Anti-pattern #15: emotional rituals without evidence
+- Made benchmark notes explicitly directional with verification requirement
+- Simplified Core Principles section
+
+## [1.0.0] -- 2025-12-01
+
+### Added
+- Initial skill with 5 phases: Discovery, Strategy, Screen Content, A/B Test Plan, Implementation
+- Benchmark tables from Adapty/RevenueCat 2025-2026 reports
+- Screen templates for 5 paywall types
+- iOS compliance checklist
+- Personalization patterns with quiz-based examples
+- Related skills cross-references

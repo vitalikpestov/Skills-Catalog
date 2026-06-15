@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "prompts": [
+    {
+      "id": "audit_missing_visual",
+      "prompt": "Audit my paywall.",
+      "expected_mode": "audit",
+      "max_references": 3,
+      "must_include": ["Missing data", "screenshot", "Safe next step"],
+      "must_not_include": ["12-section full audit"]
+    },
+    {
+      "id": "quick_trial_paid_low",
+      "prompt": "Trial-to-paid is 18%. Is this bad?",
+      "expected_mode": "quick",
+      "max_references": 1,
+      "must_include": ["Verdict", "Reason", "Action"],
+      "must_not_include": ["Current state", "Layout sketch"]
+    },
+    {
+      "id": "screenshot_no_context",
+      "prompt": "Audit this paywall screenshot: [image attached]",
+      "expected_mode": "audit",
+      "max_references": 3,
+      "must_include": ["Observed from screenshot", "Missing", "Sources"],
+      "must_not_include": ["I cannot help without context", "12-section"]
+    },
+    {
+      "id": "design_with_context",
+      "prompt": "Make a paywall for an iOS meditation app. Annual $49.99, monthly $9.99, 7-day trial, shown after onboarding.",
+      "expected_mode": "design",
+      "max_references": 2,
+      "must_include": ["Recommended model", "Copy draft", "Sources"],
+      "must_not_include": ["send 10 things", "12-section", "long manifesto"]
+    },
+    {
+      "id": "copy_compression",
+      "prompt": "Write paywall copy for an iOS walking game. Annual $49.99, weekly $5.99, no trial, settings screen.",
+      "expected_mode": "design",
+      "max_references": 2,
+      "must_include": ["headline", "bullets", "CTA", "trust"],
+      "must_not_include": ["6 benefits", "long subtitle", "behavioral science explanation", "feature dump"]
+    },
+    {
+      "id": "calculator_missing_cac",
+      "prompt": "Annual is $59.99, monthly is $9.99, conversion is 6%. Will I be profitable?",
+      "expected_mode": "calculator",
+      "max_references": 1,
+      "must_include": ["Missing data", "CPI", "CAC"],
+      "must_not_include": ["guaranteed"]
+    },
+    {
+      "id": "compliance_missing_terms",
+      "prompt": "Will Apple reject this paywall?",
+      "expected_mode": "compliance",
+      "max_references": 2,
+      "must_include": ["Missing data", "price", "duration", "restore"],
+      "must_not_include": ["approved"]
+    },
+    {
+      "id": "pattern_calm",
+      "prompt": "How does Calm structure its paywall?",
+      "expected_mode": "pattern",
+      "max_references": 1,
+      "must_include": ["Pattern", "Transfer rule"],
+      "must_not_include": ["12-section"]
+    }
+  ]
+}

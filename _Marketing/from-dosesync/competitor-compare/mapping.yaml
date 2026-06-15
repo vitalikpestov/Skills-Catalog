@@ -1,0 +1,166 @@
+# Competitor Compare — App Configuration
+# Version: 1.0
+# 6 competitors: 3 direct + 3 pattern references
+
+version: "1.0"
+
+# ---------------------------------------------------------------------------
+# DoseSync itself — screens sourced from /audit-ui skill output
+# ---------------------------------------------------------------------------
+self:
+  name: DoseSync
+  id: self
+  folder: competitors/dosesync
+  notes: "Our own screens — refresh via /audit-ui weekly"
+
+# ---------------------------------------------------------------------------
+# Direct competitors
+# ---------------------------------------------------------------------------
+competitors:
+  - name: Medisafe
+    id: medisafe
+    app_store_id: 920353840
+    app_store_url: https://apps.apple.com/us/app/medisafe-medication-management/id920353840
+    folder: competitors/medisafe
+    category: direct
+    role: "Market leader (10M+ DL), new hard paywall Jan 2026"
+    patterns:
+      - hero
+      - paywall
+      - onboarding
+      - confirm-cta
+    notes: |
+      Pill tray metaphor on home. Persistent alarm ("Medfriend").
+      Jan 2026 paywall change caused mass user attrition — our opportunity.
+    last_updated: "2026-04-18"
+
+  - name: MyTherapy
+    id: mytherapy
+    app_store_id: 662170995
+    app_store_url: https://apps.apple.com/us/app/mytherapy-medication-reminder/id662170995
+    folder: competitors/mytherapy
+    category: direct
+    role: "Free B2B (pharma-funded)"
+    patterns:
+      - hero
+      - onboarding
+      - confirm-cta
+      - empty-state
+    notes: |
+      Mood check-in paired with dose. Illustrated empty states.
+      NO family sync — our moat. Good UI polish without paywall pressure.
+    last_updated: "2026-04-18"
+
+  - name: CareClinic
+    id: careclinic
+    app_store_id: 1268926569
+    app_store_url: https://apps.apple.com/us/app/careclinic-health-tracker/id1268926569
+    folder: competitors/careclinic
+    category: direct
+    role: "Holistic health tracking"
+    patterns:
+      - hero
+      - paywall
+      - onboarding
+    notes: |
+      Broader tracking (symptoms, labs, nutrients). Feature breadth trap.
+      We intentionally avoid this — family-first focus.
+      4.26 rating — their focus is diluted.
+    last_updated: "2026-04-18"
+
+  # -------------------------------------------------------------------------
+  # Pattern references (not direct competitors but benchmark-worthy)
+  # -------------------------------------------------------------------------
+  - name: Flighty
+    id: flighty
+    app_store_id: 1358823008
+    app_store_url: https://apps.apple.com/us/app/flighty-live-flight-tracker/id1358823008
+    folder: competitors/flighty
+    category: pattern-ref
+    role: "Hero card + Live Activity gold standard"
+    patterns:
+      - hero
+      - paywall
+    notes: |
+      Canonical hero next-event card. Live Activity implementation is THE reference.
+      Push copy with personality. Apple Design Award winner.
+    last_updated: "2026-04-18"
+
+  - name: Huckleberry
+    id: huckleberry
+    app_store_id: 1498025810
+    app_store_url: https://apps.apple.com/us/app/huckleberry-child-sleep-expert/id1498025810
+    folder: competitors/huckleberry
+    category: pattern-ref
+    role: "Family sync + child-caregiver model"
+    patterns:
+      - onboarding
+      - family-feed
+    notes: |
+      DIRECT analog for our multi-caregiver coordination.
+      Mom + dad + nanny workflows.
+      AI-personalization without "medical" framing — shows how to do it safely.
+    last_updated: "2026-04-18"
+
+  - name: How We Feel
+    id: howwefeel
+    app_store_id: 1562706384
+    app_store_url: https://apps.apple.com/us/app/how-we-feel/id1562706384
+    folder: competitors/howwefeel
+    category: pattern-ref
+    role: "One-tap confirm + calm tone"
+    patterns:
+      - confirm-cta
+      - empty-state
+    notes: |
+      Emotion wheel UX innovation. Check-in flow under 15 seconds.
+      Non-profit trust-signalling — reference for tone.
+      Benchmark for our dose confirm CTA.
+    last_updated: "2026-04-18"
+
+# ---------------------------------------------------------------------------
+# UI patterns catalog
+# ---------------------------------------------------------------------------
+patterns:
+  - slug: hero
+    name: "Hero card / Main screen"
+    description: "Primary user attention surface — next event, main action"
+    priority: P0
+  - slug: paywall
+    name: "Paywall"
+    description: "Subscription purchase surface"
+    priority: P0
+  - slug: onboarding
+    name: "Onboarding flow"
+    description: "Welcome + first-run experience"
+    priority: P0
+  - slug: confirm-cta
+    name: "Confirm CTA"
+    description: "Primary action confirmation (dose given, etc.)"
+    priority: P1
+  - slug: empty-state
+    name: "Empty state"
+    description: "View when no data exists yet"
+    priority: P1
+  - slug: streak
+    name: "Streak / adherence celebration"
+    description: "Habit loop reinforcement"
+    priority: P2
+  - slug: family-feed
+    name: "Family activity feed"
+    description: "Multi-user activity log (our moat)"
+    priority: P1
+
+# ---------------------------------------------------------------------------
+# Maintenance
+# ---------------------------------------------------------------------------
+maintenance:
+  cadence:
+    weekly: "Refresh competitors/dosesync/ via /audit-ui"
+    quarterly: "Refresh competitor screenshots from Mobbin"
+    annually: "Re-evaluate competitor set"
+
+  tools:
+    mobbin: "https://mobbin.com (Pro $29/mo)"
+    itunes_search_api: "https://itunes.apple.com/lookup?id=<app_id>&country=us"
+    imagemagick: "brew install imagemagick (optional for PNG export)"

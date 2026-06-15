@@ -1,0 +1,282 @@
+# Copy Lint Rules — DoseSync
+# Version: 1.0
+# Last updated: 2026-04-18
+
+version: "1.0"
+
+# ===========================================================================
+# G1: Medical Guardrails — no medication names/dosages in push notifications
+# ===========================================================================
+# These are ONLY checked in notification keys (prefix: notif_, push_) and
+# values that appear in UNMutableNotificationContent.body/title in code.
+# Medication DB entries (medications_db.json) are legitimate and exempt.
+
+g1_medical_guardrails:
+  severity: P0
+  context_keys:
+    # Only check keys matching these prefixes for G1 violations
+    - "notif_"
+    - "push_"
+    - "alarm_"
+    - "reminder_"
+
+  banned_medications:
+    # Common active ingredients
+    - amoxicillin
+    - ibuprofen
+    - aspirin
+    - acetaminophen
+    - paracetamol
+    - penicillin
+    - metformin
+    - lisinopril
+    - atorvastatin
+    - omeprazole
+    - metoprolol
+    - levothyroxine
+    - amlodipine
+    - hydrochlorothiazide
+    - losartan
+    - simvastatin
+    - prednisone
+    - warfarin
+    # Common brand names
+    - nurofen
+    - tylenol
+    - advil
+    - aleve
+    - motrin
+    - claritin
+    - zyrtec
+    - lipitor
+    - nexium
+    - prilosec
+    - synthroid
+    - xanax
+    - adderall
+
+  dosage_regex:
+    # Matches "250mg", "5 ml", "100mcg", "1g", "400 IU"
+    - '\b\d+(?:\.\d+)?\s*(?:mg|mcg|ml|g|IU|tsp|tbsp|cc)\b'
+
+# ===========================================================================
+# G2: Medical Claims — no clinical/medical authority language anywhere
+# ===========================================================================
+
+g2_medical_claims:
+  severity: P0
+  # Applied to ALL xcstrings values (no context filter)
+  banned_phrases:
+    # Clinical authority claims
+    - "clinically proven"
+    - "clinically validated"
+    - "clinically tested"
+    - "medically proven"
+    - "FDA approved"
+    - "FDA-approved"
+    - "doctor recommended"
+    - "doctor-recommended"
+    - "medical grade"
+    - "medical-grade"
+    # Outcome claims (SaMD risk)
+    - "prevents complications"
+    - "prevents disease"
+    - "improves treatment"
+    - "improves adherence"  # borderline — audit manually
+    - "cures"
+    - "treats"
+    - "diagnoses"
+    - "diagnose"
+    - "prescribes"
+    - "predicts"
+    # Quantified medical outcomes
+    - "% effective"
+    - "reduces risk by"
+    - "proven to"
+
+  case_insensitive: true
+
+  # Skip context: phrases that are fine in specific key prefixes
+  # (tuned after copy-lint v1.0 first run — 2026-04-18)
+  skip_contexts:
+    # "diagnose issues" in feedback form = technical support, not medical
+    - key_prefix: "feedback_"
+      allowed_phrases:
+        - "diagnose issues"
+        - "diagnose"  # narrow — only when preceded by "issues", "bug", "problem"
+
+# ===========================================================================
+# G3: Brand Voice — generic CTAs should match Brand Voice Guide pairs
+# ===========================================================================
+
+g3_brand_voice:
+  severity: P1
+  # Check xcstrings EN values for these generic phrases and suggest branded
+  pairs:
+    # CTA
+    - from: "Give Dose"
+      to: "Yes, I gave it"
+    - from: "Mark as given"
+      to: "Yes, I gave it"
+    - from: "Confirm"
+      to: "I confirm this dose"
+      context: "dose_"  # only flag in dose-related keys
+    - from: "Next Step"
+      to: "Continue to schedule"
+    - from: "Add Medication"
+      to: "Add a new med"
+    - from: "Delete"
+      to: "Remove this med"
+      context: "medication_"
+    # Errors
+    - from: "Something went wrong"
+      to: "We hit a bump — retrying..."
+    - from: "Error"
+      to: "Couldn't reach the server — retrying in 10s"
+    - from: "No data"
+      to: "No doses recorded yet"
+    # State messages
+    - from: "Offline"
+      to: "You're offline — we'll sync when you're back"
+      context: "banner_"
+    - from: "Loading..."
+      to: "Getting things ready..."
+    # Generic terms
+    - from: "adherence rate"
+      to: "doses on track"
+    - from: "compliance"
+      to: "on-time record"
+    - from: "regimen"
+      to: "schedule"
+
+# ===========================================================================
+# G4: Localization Health — missing translations + overflow risk
+# ===========================================================================
+
+g4_localization:
+  severity: P1
+
+  # Keys matching these patterns are treated as button/CTA (length-sensitive)
+  button_key_patterns:
+    - "_button"
+    - "_cta"
+    - "_action"
+    - "home_give_"
+    - "celebration_continue"
+    - "common_cancel"
+    - "common_add"
+    - "common_save"
+    - "common_continue"
+
+  # Max character length for button strings by locale
+  button_max_length:
+    en: 30
+    ru: 35  # Russian typically runs ~15-20% longer
+
+  # Flag if state is not "translated"
+  required_state: "translated"
+
+  # Flag if any locale value is empty string
+  forbid_empty_value: true
+
+  # Languages that MUST have translations (at launch)
+  required_languages:
+    - en
+    - ru
+
+# ===========================================================================
+# G5: Guilt-Shaming — reminders should be kind, not accusatory
+# ===========================================================================
+
+g5_guilt_shaming:
+  severity: P1
+  context_keys:
+    - "notif_"
+    - "push_"
+    - "missed_"
+    - "reminder_"
+
+  banned_patterns:
+    # Accusatory
+    - "You missed"
+    - "You forgot"
+    - "You failed"
+    - "You're losing"
+    - "Don't lose your"  # streak pressure
+    # Exclamation + negative (guilt-trip pattern)
+    - "missed!"
+    - "forgot!"
+    - "late!"
+  # Regex patterns (case insensitive)
+  banned_regex:
+    - '\bYou\s+(?:missed|forgot|failed|lost)\b'
+
+  case_insensitive: true
+
+  # Paywall loss-aversion is intentional per conversion-framework.md.
+  # Strings in paywall_* keys may use "Don't lose" language for conversion.
+  skip_contexts:
+    - key_prefix: "paywall_"
+      allowed_patterns:
+        - "Don't lose track"
+        - "Don't miss out"
+
+# ===========================================================================
+# G6: Hardcoded Strings — all user-facing text must go through String Catalog
+# ===========================================================================
+
+g6_hardcoded_strings:
+  severity: P2
+
+  # File scope — only scan these dirs
+  scan_paths:
+    - "DoseSync/DoseSync/Views/"
+    - "DoseSync/DoseSync/ViewModels/"
+
+  # Patterns that indicate a hardcoded UI string
+  detect_patterns:
+    # Text("Something") where Something starts with uppercase (likely UI, not a key)
+    - 'Text\("[A-Z][^"]*"\)'
+    # .accessibilityLabel("Something") with uppercase start
+    - '\.accessibilityLabel\("[A-Z][^"]*"\)'
+    # Button("Something") { ... }
+    - 'Button\("[A-Z][^"]*"\)'
+
+  # Skip patterns — these are not violations
+  skip_patterns:
+    # #Preview block strings are OK (test data)
+    - '#Preview'
+    # String(localized:) is the correct pattern
+    - 'String\(localized:'
+    # LocalizedStringKey literal — auto-localized
+    - 'LocalizedStringKey'
+    # Text(someVariable) — dynamic, not hardcoded
+    - 'Text\(\w+\)'
+    # Already-localized string key (lowercase + underscore)
+    - 'Text\("[a-z_]+"\)'
+
+  # File patterns to skip entirely
+  skip_files:
+    - "*Preview.swift"
+    - "*Mock*.swift"
+    - "ShimmerModifier.swift"  # has decorative text
+    - "AppStorePrivacyScreenView.swift"  # App Store marketing mockup, not runtime
+    - "MilestoneShareCardView.swift"  # share card rendered to image, not localized UI
+
+  # Exact string literals that are legitimate even without localization.
+  # Brand names, debug markers, and universal tokens.
+  allowed_strings:
+    - "DoseSync"        # brand name — never localized
+    - "DEBUG"           # debug build marker
+    - "DEBUG — StoreKit not configured"  # debug fallback, only in DEBUG builds
+    - "DEV: Войти как Family →"           # DEBUG-only dev bypass in PaywallWelcomeScreen, gated by #if DEBUG
+    - "DEBUG: Skip to Family Home"        # DEBUG-only a11y label paired with above
+    - "TODO"
+    - "FIXME"
+    - "Content"         # ViewStateContent stub/preview
+    - "Placeholder"     # in docstrings
+    - "Not set"         # TODO: localize in CourseDateRangePicker — tracked as G6.1
+
+  # TODO v1.1: Add `#if DEBUG` block-context detection so any literal inside
+  # a DEBUG conditional is auto-exempt without explicit whitelisting.
+  # Current v1.0 is line-based grep — no AST/block awareness.

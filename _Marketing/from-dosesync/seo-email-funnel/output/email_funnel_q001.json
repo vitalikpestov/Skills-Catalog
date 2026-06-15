@@ -1,0 +1,118 @@
+{
+  "trigger": "optin_q001_double_dosing",
+  "persona_segment": "sandwich_caregiver",
+  "language": "en",
+  "sequence": [
+    {
+      "step": 0,
+      "delay_hours": 0,
+      "subject_lines": [
+        "Your Double-Dose Prevention Checklist is here",
+        "The one-page system that stops coordination errors"
+      ],
+      "preview_text": "Download your checklist + what to expect next.",
+      "goal": "deliver_lead_magnet",
+      "content_summary": [
+        "Thank them for downloading — acknowledge they're clearly someone who takes medication coordination seriously.",
+        "Direct download link to the checklist PDF.",
+        "One sentence on what each section does (set up in under 5 minutes).",
+        "Brief preview: over the next few days I'll share the real stories behind why families build these systems — and one thing most of them wish they'd done sooner."
+      ],
+      "cta": "Download the checklist",
+      "ps_line": "P.S. If you have a grandparent or part-time caregiver in the loop — the tearaway card in Section 4 is the part I hear about most."
+    },
+    {
+      "step": 1,
+      "delay_hours": 24,
+      "subject_lines": [
+        "The whiteboard lasted two weeks",
+        "\"We thought we had it figured out\""
+      ],
+      "preview_text": "The moment they realized their system had a hole in it.",
+      "goal": "story_and_empathy",
+      "content_summary": [
+        "Open with the whiteboard story — two weeks of it working, then a double dose discovered hours later. No names, composite.",
+        "The key line: the problem isn't caring. It's communication. That reframe.",
+        "Ask a question: how are you currently tracking who gave what — and what's the weakest link in that system?",
+        "No pitch. Close by saying: tomorrow I'll share the one protocol that actually holds under real-life pressure."
+      ],
+      "cta": "Reply and tell me your system",
+      "ps_line": "P.S. Replies from this list get read. If you share your setup, I'll send you specific notes on where it usually breaks."
+    },
+    {
+      "step": 2,
+      "delay_hours": 72,
+      "subject_lines": [
+        "Check before you give — not after",
+        "One rule. Fewer errors. Here's how."
+      ],
+      "preview_text": "The 3-step protocol families use to close the coordination gap.",
+      "goal": "education_tip",
+      "content_summary": [
+        "The confirm-before-you-give protocol — three steps, no app required.",
+        "Why 'after the fact' logging always fails (the window of ambiguity).",
+        "Mention that apps like DoseSync are built around this exact protocol — real-time confirmation, visible to all caregivers instantly.",
+        "Close: the protocol works with any tool. The tool just determines how fast the confirmation travels."
+      ],
+      "cta": "See how real-time confirmation works",
+      "ps_line": "P.S. The grandparent mode mentioned in the checklist — that idea came directly from families who needed a version simple enough for one-button use."
+    },
+    {
+      "step": 3,
+      "delay_hours": 168,
+      "subject_lines": [
+        "Why I'm building this for families, not hospitals",
+        "Behind the scenes: what we got wrong first"
+      ],
+      "preview_text": "The version we almost shipped — and why caregivers pushed back.",
+      "goal": "behind_the_scenes",
+      "content_summary": [
+        "Share why DoseSync was built: the Reddit thread about double-dosing that surfaced hundreds of identical stories.",
+        "What the first version looked like — too complex, too clinical. What families actually needed was simpler.",
+        "The grandparent-friendly mode came from one specific piece of feedback: 'my dad will never use this if there's more than one button.'",
+        "No pitch. Just transparency about the build process and what's coming."
+      ],
+      "cta": "Follow the build",
+      "ps_line": "P.S. We're launching August 4th. I'll tell you more next week — including something we've kept quiet about the trial."
+    },
+    {
+      "step": 4,
+      "delay_hours": 264,
+      "subject_lines": [
+        "DoseSync launches August 4th — here's what that means for you",
+        "You're on the list. Here's what's coming."
+      ],
+      "preview_text": "What the 7-day trial includes — and why we structured it this way.",
+      "goal": "pre_launch_soft",
+      "content_summary": [
+        "DoseSync launches August 4th — full family coordination, real-time sync, grandparent-friendly mode.",
+        "Every account starts with a full 7-day trial — all features unlocked, no partial access.",
+        "Why: we want you to see what coordinated medication management actually feels like before you decide if it's worth keeping.",
+        "What you'll get: shared dose log, push confirmation to all caregivers, escalation reminders, double-dose protection built in.",
+        "Soft CTA: if you're on this list you'll get early access when doors open."
+      ],
+      "cta": "I'm in — notify me August 4th",
+      "ps_line": "P.S. No free plan — but the 7-day trial is real. Every feature, fully unlocked, from day one.\n\n---\n*DoseSync is a coordination and reminder tool, not a medical recommendation. Always consult a healthcare professional before changing any medication schedule.*"
+    }
+  ],
+  "launch_broadcast_template": {
+    "step": 999,
+    "delay_hours": 0,
+    "subject_lines": [
+      "DoseSync is live — your family coordination system starts today",
+      "The double-dose problem has a solution. It launched today."
+    ],
+    "preview_text": "7-day free trial. All features. Starting now.",
+    "goal": "launch_announcement",
+    "content_summary": [
+      "Call back their original pain: the whiteboard that failed, the text that arrived too late, the double dose nobody intended.",
+      "Today that changes: DoseSync is live on the App Store.",
+      "3 things it does: (1) shared real-time dose log all caregivers see instantly, (2) push confirmation the moment any caregiver marks a dose, (3) built-in double-dose protection — second confirmation attempt is blocked automatically.",
+      "7-day free trial — all features, no partial access, no credit card required to start.",
+      "Primary CTA: Download on the App Store"
+    ],
+    "cta": "Start my free 7-day trial",
+    "ps_line": "P.S. The grandparent mode is live too. One button. Large text. No navigation. Forward this to anyone in your caregiving loop.",
+    "disclaimer": "*DoseSync is a coordination and reminder tool, not a medical recommendation. Always consult a healthcare professional before changing any medication schedule.*"
+  }
+}

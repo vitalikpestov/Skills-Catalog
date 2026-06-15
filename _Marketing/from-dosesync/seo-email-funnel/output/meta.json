@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-05-13T20:17:47Z",
+  "total_questions": 1,
+  "results": [
+    {
+      "question_id": "q001",
+      "blog_title": "How to Prevent Double-Dosing When Multiple Caregivers Share Medication Duties",
+      "word_count": 1396,
+      "lead_magnet_title": "Double-Dose Prevention Checklist for Families",
+      "email_steps": 5,
+      "files": {
+        "blog_post_md": "output/blog_q001_how-to-prevent-double-dosing-when-multiple-care.md",
+        "lead_magnet_md": "output/lead_magnet_q001_double-dose-prevention-checklist-for-famil.md",
+        "email_funnel_json": "output/email_funnel_q001.json",
+        "analytics_json": "output/analytics_q001.json"
+      }
+    }
+  ]
+}
