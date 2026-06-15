@@ -631,3 +631,64 @@ Telegram-боты, мини-приложения, TON.
 | `capa-officer` | CAPA system: root cause analysis, corrective action, effectiveness verification |
 | `risk-management-specialist` | ISO 14971 medical device risk: FMEA, risk-benefit, residual risk |
 | `regulatory-affairs-head` | FDA 510(k), De Novo, PMA submissions; EU MDR/IVDR regulatory strategy |
+
+---
+
+## DoseSync contributions (`from-dosesync/`) — added 2026-06-15
+
+> 30 project-original skills extracted from the DoseSync studio, placed under
+> `<section>/from-dosesync/`. Abspaths genericized (`$PROJECT_ROOT`); no secrets.
+
+### _Engineering/from-dosesync (6)
+| Скилл | Описание |
+|---|---|
+| `care-refactoring` | Disciplined refactor protocol: scope-lock, behavior-preserving, test-gated |
+| `gdpr-dsgvo-expert` | GDPR/DSGVO codebase privacy scan + DPIA |
+| `owasp-security` | OWASP-based security audit checklist |
+| `pr-review-expert` | PR review protocol: correctness + reuse + simplification |
+| `snyk-fix` | Secure dependency-health check + remediation |
+| `web-app-security` | Web application security testing playbook |
+
+### _Mobile-Dev/from-dosesync (8)
+| Скилл | Описание |
+|---|---|
+| `asomobile-api` | ASOMobile API: keyword/competitor data pull |
+| `compose-kotlin-agent-skills` | Jetpack Compose + Kotlin agent skill bundle |
+| `ios-simulator-skill` | iOS simulator automation (build/boot/screenshot/UI) |
+| `sync-audit` | SwiftData↔Supabase offline-first sync correctness audit |
+| `copy-lint` | App copy lint: medical-claim/tone/localization guardrails |
+| `add-screen` | Scaffold a new SwiftUI screen (4-state pattern) |
+| `create-migration` | Author a Supabase migration (RLS-aware) |
+| `implement-feature` | Feature implementation workflow (spec→code→QA handoff) |
+
+### _Product-Apps/from-dosesync (3)
+| Скилл | Описание |
+|---|---|
+| `app-paywall-pilot` | Paywall design/audit pilot (conversion patterns) |
+| `experiment-designer` | A/B experiment design + volume-gate |
+| `horizon-check` | Product horizon / roadmap scan |
+
+### _Marketing/from-dosesync (3)
+| Скилл | Описание |
+|---|---|
+| `competitor-compare` | Competitor feature/pricing comparison |
+| `landing-page-generator` | Landing page generation |
+| `seo-email-funnel` | SEO + email funnel sequence |
+
+### _Docs-Content/from-dosesync (2)
+| Скилл | Описание |
+|---|---|
+| `cook-the-blog` | Blog post production workflow |
+| `content-factory-prompt` | Universal content-multiplication prompt |
+
+### _AI-Automation/from-dosesync (8)
+| Скилл | Описание |
+|---|---|
+| `ceo-advisor` | CEO-level strategic advisory |
+| `founder-coach` | Founder coaching / decision support |
+| `inbox` | Agent inbox sweep + triage |
+| `sprint-status` | Sprint status across all agents |
+| `workflow-audit` | Agent workflow audit |
+| `cost-report` | Token/cost reporting (track-cost) |
+| `ceo-review` | CEO dashboard review |
+| `team-delegation` | Multi-agent delegation protocol |
